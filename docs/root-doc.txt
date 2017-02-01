@@ -1,0 +1,3 @@
+==== Spark Records ====
+
+Please, visit the '''[[https://swoop-inc.github.io/spark-records/ main Spark Records site]]''' to get an overview of Spark Records before digging into the API docs.
