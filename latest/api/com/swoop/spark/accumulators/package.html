@@ -1,0 +1,128 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>accumulators - com.swoop.spark.accumulators</title>
+          <meta name="description" content="accumulators - com.swoop.spark.accumulators" />
+          <meta name="keywords" content="accumulators com.swoop.spark.accumulators" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'com.swoop.spark.accumulators.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="com">com</a>.<a href="../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../package.html" class="extype" name="com.swoop.spark">spark</a></p>
+        <h1>accumulators</h1><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.accumulators.package" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accumulators</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ByKeyAdditiveAccumulator[A,B]extendsAccumulatorV2[(A,B),java.util.Map[A,B]]"></a>
+      <a id="ByKeyAdditiveAccumulator[A,B]:ByKeyAdditiveAccumulator[A,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ByKeyAdditiveAccumulator.html"><span class="name">ByKeyAdditiveAccumulator</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> extends <span class="extype" name="org.apache.spark.util.AccumulatorV2">AccumulatorV2</span>[(<span class="extype" name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator.A">A</span>, <span class="extype" name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator.B">B</span>), <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator.A">A</span>, <span class="extype" name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator.B">B</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.accumulators.package@ByKeyAdditiveAccumulator[A,B]extendsAccumulatorV2[(A,B),java.util.Map[A,B]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An <code>AccumulatorV2</code>-style accumulator for collecting a map of sums.</p><div class="fullcomment"><div class="comment cmt"><p>An <code>AccumulatorV2</code>-style accumulator for collecting a map of sums.</p><p>This accumulator is used in <a href="../records/AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">com.swoop.spark.records.AccumulatorMetrics</a> to collect
+metrics about the execution of record building.</p><p>Through the use of the <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.math.Numeric" class="extype" target="_top">scala.math.Numeric</a> typeclass, the implementation can
+be used with any numeric type as well as any other value type that is
+&quot;additive&quot; (the implementation only uses <code>zero</code> and <code>plus</code>).</p><p>For example:</p><p>- You could define <code>plus</code> to be the equivalent of <code>add</code> for another accumulator, e.g.,
+<code>LongAccumulator</code> and then you can accumulate counts, sums and
+averages by key.</p><p>- You could define <code>plus</code> on a set to be a union operation
+and then this accumulator will operate as a <code>collect_set</code> by key.</p><p>- You could define <code>plus</code> on an array to be concatenation. Combined with a <code>maxLength</code>
+parameter, this would allow a fast &quot;first N by key&quot; action that completes through a
+single map stage. The normal way, through a transformation, would require a grouping
+operation and a shuffle.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>Key type for the map to aggregate into.</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>Value type, supported by a <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.math.Numeric" class="extype" target="_top">scala.math.Numeric</a> typeclass.</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

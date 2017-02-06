@@ -1,0 +1,912 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>records - com.swoop.spark.records</title>
+          <meta name="description" content="records - com.swoop.spark.records" />
+          <meta name="keywords" content="records com.swoop.spark.records" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'com.swoop.spark.records.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="com">com</a>.<a href="../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../package.html" class="extype" name="com.swoop.spark">spark</a></p>
+        <h1>records</h1><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">records</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Spark Records package.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/" target="_blank">Spark Records documentation</a></p></span></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.swoop.spark.records"><span>records</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.swoop.spark.records.AccumulatorMetrics" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AccumulatorMetricsextendsMetrics"></a>
+      <a id="AccumulatorMetrics:AccumulatorMetrics"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AccumulatorMetrics.html"><span class="name">AccumulatorMetrics</span></a><span class="result"> extends <a href="Metrics.html" class="extype" name="com.swoop.spark.records.Metrics">Metrics</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@AccumulatorMetricsextendsMetrics" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A <a href="Metrics.html" class="extype" name="com.swoop.spark.records.Metrics">Metrics</a> implementation using <a href="../accumulators/ByKeyAdditiveAccumulator.html" class="extype" name="com.swoop.spark.accumulators.ByKeyAdditiveAccumulator">com.swoop.spark.accumulators.ByKeyAdditiveAccumulator</a>.</p>
+    </li><li name="com.swoop.spark.records.BuildContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BuildContext[Ctx]extendsHasJobContext[Ctx]withHasFeatureswithHasDetailswithThrowsErrors"></a>
+      <a id="BuildContext[Ctx]:BuildContext[Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BuildContext.html"><span class="name">BuildContext</span></a><span class="tparams">[<span name="Ctx">Ctx</span>]</span><span class="result"> extends <a href="HasJobContext.html" class="extype" name="com.swoop.spark.records.HasJobContext">HasJobContext</a>[<span class="extype" name="com.swoop.spark.records.BuildContext.Ctx">Ctx</span>] with <a href="HasFeatures.html" class="extype" name="com.swoop.spark.records.HasFeatures">HasFeatures</a> with <a href="HasDetails.html" class="extype" name="com.swoop.spark.records.HasDetails">HasDetails</a> with <a href="ThrowsErrors.html" class="extype" name="com.swoop.spark.records.ThrowsErrors">ThrowsErrors</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@BuildContext[Ctx]extendsHasJobContext[Ctx]withHasFeatureswithHasDetailswithThrowsErrors" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convenience trait that combines the main services exposed by <a href="RecordBuilder.html" class="extype" name="com.swoop.spark.records.RecordBuilder">RecordBuilder</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Convenience trait that combines the main services exposed by <a href="RecordBuilder.html" class="extype" name="com.swoop.spark.records.RecordBuilder">RecordBuilder</a>.
+</p></div><dl class="paramcmts block"><dt class="tparam">Ctx</dt><dd class="cmt"><p>the job context</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html#advanced-topics-4-build-context-1" target="_blank">Build Context</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.BuildsRecords" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BuildsRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsSerializable"></a>
+      <a id="BuildsRecords[Rec&lt;:Record[_,_]]:BuildsRecords[Rec]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BuildsRecords.html"><span class="name">BuildsRecords</span></a><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@BuildsRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Topmost trait for record builders.</p>
+    </li><li name="com.swoop.spark.records.Cause" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CauseextendsProductwithSerializable"></a>
+      <a id="Cause:Cause"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Cause.html"><span class="name">Cause</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="stack">stack: <span class="extype" name="scala.Seq">Seq</span>[<a href="StackElement.html" class="extype" name="com.swoop.spark.records.StackElement">StackElement</a>] = <span class="symbol">Seq.empty</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@CauseextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple, serializable exception cause that keeps the exception message and the stack trace.</p>
+    </li><li name="com.swoop.spark.records.CompositeRecordBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="CompositeRecordBuilder[BuildInput,RecordInput,Rec&lt;:com.swoop.spark.records.Record[_,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilderLike[Rec,Ctx]"></a>
+      <a id="CompositeRecordBuilder[BuildInput,RecordInput,Rec&lt;:Record[_,_],Ctx&lt;:JobContext]:CompositeRecordBuilder[BuildInput,RecordInput,Rec,Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CompositeRecordBuilder.html"><span class="name">CompositeRecordBuilder</span></a><span class="tparams">[<span name="BuildInput">BuildInput</span>, <span name="RecordInput">RecordInput</span>, <span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>, <span name="Ctx">Ctx &lt;: <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a></span>]</span><span class="result"> extends <a href="RecordBuilderLike.html" class="extype" name="com.swoop.spark.records.RecordBuilderLike">RecordBuilderLike</a>[<span class="extype" name="com.swoop.spark.records.CompositeRecordBuilder.Rec">Rec</span>, <span class="extype" name="com.swoop.spark.records.CompositeRecordBuilder.Ctx">Ctx</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@CompositeRecordBuilder[BuildInput,RecordInput,Rec&lt;:com.swoop.spark.records.Record[_,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilderLike[Rec,Ctx]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base class for record builders that produce multiple records for one input.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for record builders that produce multiple records for one input.
+</p></div><dl class="paramcmts block"><dt class="tparam">BuildInput</dt><dd class="cmt"><p>The input type for the builder.</p></dd><dt class="tparam">RecordInput</dt><dd class="cmt"><p>The input type records are built from.</p></dd><dt class="tparam">Rec</dt><dd class="cmt"><p>The record type.</p></dd><dt class="tparam">Ctx</dt><dd class="cmt"><p>The job context type</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="NestedRecordBuilder.html" class="extype" name="com.swoop.spark.records.NestedRecordBuilder">NestedRecordBuilder</a></p></span><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html##advanced-topics-4-composite-builders-0" target="_blank">Composite Builders</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.DriverContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="DriverContextextendsSerializablewithMetricswithFlight"></a>
+      <a id="DriverContext:DriverContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DriverContext.html"><span class="name">DriverContext</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a> with <a href="Metrics.html" class="extype" name="com.swoop.spark.records.Metrics">Metrics</a> with <a href="Flight.html" class="extype" name="com.swoop.spark.records.Flight">Flight</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@DriverContextextendsSerializablewithMetricswithFlight" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Shared behaviors for the build context that integrates with Spark context.</p><div class="fullcomment"><div class="comment cmt"><p>Shared behaviors for the build context that integrates with Spark context.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html#advanced-topics-4-build-context-1" target="_blank">Build Context</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.FeatureMask" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="FeatureMaskextendsAnyRef"></a>
+      <a id="FeatureMask:FeatureMask"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="FeatureMask.html"><span class="name">FeatureMask</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FeatureMaskextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait for types that have a feature mask.</p>
+    </li><li name="com.swoop.spark.records.Features" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="FeaturesextendsAnyRef"></a>
+      <a id="Features:Features"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Features.html"><span class="name">Features</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FeaturesextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Definitions for the meaning of bits in the <code>features</code> bit mask of <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">com.swoop.spark.records.Record</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Definitions for the meaning of bits in the <code>features</code> bit mask of <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">com.swoop.spark.records.Record</a>.</p><p>The least significant 16 bits are reserved for framework use.
+The next 15 bits are available for application use.
+The most significant bit is reserved for framework use also.
+</p></div></div>
+    </li><li name="com.swoop.spark.records.FlatRecordEnvironment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlatRecordEnvironmentextendsRecordEnvironment"></a>
+      <a id="FlatRecordEnvironment:FlatRecordEnvironment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlatRecordEnvironment.html"><span class="name">FlatRecordEnvironment</span></a><span class="result"> extends <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FlatRecordEnvironmentextendsRecordEnvironment" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A flat record environment.</p>
+    </li><li name="com.swoop.spark.records.Flight" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="FlightextendsAnyRef"></a>
+      <a id="Flight:Flight"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Flight.html"><span class="name">Flight</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FlightextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait identifying flights: one or more related Spark jobs.</p>
+    </li><li name="com.swoop.spark.records.HasDetails" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="HasDetailsextendsAnyRef"></a>
+      <a id="HasDetails:HasDetails"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HasDetails.html"><span class="name">HasDetails</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@HasDetailsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait for a builder that aggregates details, which will become issues.</p><div class="fullcomment"><div class="comment cmt"><p>Trait for a builder that aggregates details, which will become issues.</p><p>Under the covers, details are <span class="extype" name="Throwable">Throwable</span> instances: either exceptions thrown by
+the application code or <a href="ThrowableMessage.html" class="extype" name="com.swoop.spark.records.ThrowableMessage">ThrowableMessage</a> instances that may be thrown and caught
+or simply constructed using one of the convenience methods exposed by this trait.</p></div></div>
+    </li><li name="com.swoop.spark.records.HasFeatures" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HasFeaturesextendsAnyRef"></a>
+      <a id="HasFeatures:HasFeatures"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HasFeatures.html"><span class="name">HasFeatures</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@HasFeaturesextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait for a builder that aggregates features.</p>
+    </li><li name="com.swoop.spark.records.HasJobContext" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HasJobContext[Ctx]extendsAnyRef"></a>
+      <a id="HasJobContext[Ctx]:HasJobContext[Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HasJobContext.html"><span class="name">HasJobContext</span></a><span class="tparams">[<span name="Ctx">Ctx</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@HasJobContext[Ctx]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait for a builder with a job context.</p>
+    </li><li name="com.swoop.spark.records.Issue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IssueextendsProductwithSerializable"></a>
+      <a id="Issue:Issue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Issue.html"><span class="name">Issue</span></a><span class="params">(<span name="category">category: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="causes">causes: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Seq">Seq</span>[<a href="Cause.html" class="extype" name="com.swoop.spark.records.Cause">Cause</a>]] = <span class="symbol">None</span></span>, <span name="id">id: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="details">details: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@IssueextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An issue is a container for diagnostic information including both simple fields
+and an optional sequence of causes.</p><div class="fullcomment"><div class="comment cmt"><p>An issue is a container for diagnostic information including both simple fields
+and an optional sequence of causes.
+</p></div><dl class="paramcmts block"><dt class="param">category</dt><dd class="cmt"><p>The category of the issue.
+                It matches the with the values coming from the different types of
+                <a href="Issue$$ThrowableMessageType.html" class="extype" name="com.swoop.spark.records.Issue.ThrowableMessageType">Issue$.ThrowableMessageType</a> <code>featureMask</code> values.</p></dd><dt class="param">message</dt><dd class="cmt"><p>The message related to the issue.</p></dd><dt class="param">causes</dt><dd class="cmt"><p>The causes of this issue.</p></dd><dt class="param">id</dt><dd class="cmt"><p>The issue ID.</p></dd><dt class="param">details</dt><dd class="cmt"><p>Optional additional details for the issue.
+                For root cause analysis purposes it is useful to to split messages we
+                want to associate with records into a stable portion (the issue message) and
+                a variable portion (the issue details).
+                This enables stable grouping and counting.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="Issue$.html#messageWithDetails(message:String,detail:String):String" class="extmbr" name="com.swoop.spark.records.Issue#messageWithDetails">Issue$.messageWithDetails</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.IssuesDataFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IssuesDataFrameextendsRootCauseAnalysisOps"></a>
+      <a id="IssuesDataFrame:IssuesDataFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="IssuesDataFrame.html"><span class="name">IssuesDataFrame</span></a><span class="result"> extends <a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@IssuesDataFrameextendsRootCauseAnalysisOps" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides root cause analysis operations at the issues level.</p>
+    </li><li name="com.swoop.spark.records.JobContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="JobContextextendsSerializablewithMetricswithFlight"></a>
+      <a id="JobContext:JobContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="JobContext.html"><span class="name">JobContext</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a> with <a href="Metrics.html" class="extype" name="com.swoop.spark.records.Metrics">Metrics</a> with <a href="Flight.html" class="extype" name="com.swoop.spark.records.Flight">Flight</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@JobContextextendsSerializablewithMetricswithFlight" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Shared behaviors for the build context that provides services to builders but does not
+work directly with Spark context APIs, allowing fast Spark-less testing.</p><div class="fullcomment"><div class="comment cmt"><p>Shared behaviors for the build context that provides services to builders but does not
+work directly with Spark context APIs, allowing fast Spark-less testing.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html#advanced-topics-4-build-context-1" target="_blank">Build Context</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.Metrics" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MetricsextendsAnyRef"></a>
+      <a id="Metrics:Metrics"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Metrics.html"><span class="name">Metrics</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@MetricsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Shared trait defining metrics collection services</p>
+    </li><li name="com.swoop.spark.records.NestedRecordBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="NestedRecordBuilder[Input,Data&lt;:Product,Rec&lt;:com.swoop.spark.records.Record[Data,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilder[Input,Data,Rec,Ctx]"></a>
+      <a id="NestedRecordBuilder[Input,Data&lt;:Product,Rec&lt;:Record[Data,_],Ctx&lt;:JobContext]:NestedRecordBuilder[Input,Data,Rec,Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NestedRecordBuilder.html"><span class="name">NestedRecordBuilder</span></a><span class="tparams">[<span name="Input">Input</span>, <span name="Data">Data &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a></span>, <span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[<span class="extype" name="com.swoop.spark.records.NestedRecordBuilder.Data">Data</span>, _]</span>, <span name="Ctx">Ctx &lt;: <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a></span>]</span><span class="result"> extends <a href="RecordBuilder.html" class="extype" name="com.swoop.spark.records.RecordBuilder">RecordBuilder</a>[<span class="extype" name="com.swoop.spark.records.NestedRecordBuilder.Input">Input</span>, <span class="extype" name="com.swoop.spark.records.NestedRecordBuilder.Data">Data</span>, <span class="extype" name="com.swoop.spark.records.NestedRecordBuilder.Rec">Rec</span>, <span class="extype" name="com.swoop.spark.records.NestedRecordBuilder.Ctx">Ctx</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@NestedRecordBuilder[Input,Data&lt;:Product,Rec&lt;:com.swoop.spark.records.Record[Data,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilder[Input,Data,Rec,Ctx]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base class for nested record builders of single records.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for nested record builders of single records.
+</p></div><dl class="paramcmts block"><dt class="tparam">Input</dt><dd class="cmt"><p>The source input</p></dd><dt class="tparam">Data</dt><dd class="cmt"><p>The record data</p></dd><dt class="tparam">Rec</dt><dd class="cmt"><p>The record</p></dd><dt class="tparam">Ctx</dt><dd class="cmt"><p>The job context</p></dd></dl></div>
+    </li><li name="com.swoop.spark.records.PartitionedRecordEnvironment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PartitionedRecordEnvironmentextendsRecordEnvironment"></a>
+      <a id="PartitionedRecordEnvironment:PartitionedRecordEnvironment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PartitionedRecordEnvironment.html"><span class="name">PartitionedRecordEnvironment</span></a><span class="result"> extends <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@PartitionedRecordEnvironmentextendsRecordEnvironment" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A partitioned error environment.</p>
+    </li><li name="com.swoop.spark.records.RCARichDataFrame" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RCARichDataFrameextendsAnyRef"></a>
+      <a id="RCARichDataFrame:RCARichDataFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RCARichDataFrame.html"><span class="name">RCARichDataFrame</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RCARichDataFrameextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implicit operations on Spark Records dataframes.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit operations on Spark Records dataframes.</p><p>Most operations can be applied equally at the record level or at the level of unwound issues.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="RootCauseAnalysis.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysis">RootCauseAnalysis</a></p></span><span class="cmt"><p><a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.Record" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Record[A&lt;:Product,Source]extendsProductwithSerializable"></a>
+      <a id="Record[A&lt;:Product,Source]:Record[A,Source]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Record.html"><span class="name">Record</span></a><span class="tparams">[<span name="A">A &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a></span>, <span name="Source">Source</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@Record[A&lt;:Product,Source]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Spark Record is an envelope around data.</p><div class="fullcomment"><div class="comment cmt"><p>A Spark Record is an envelope around data.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The data stored in the record</p></dd><dt class="tparam">Source</dt><dd class="cmt"><p>The input type</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/" target="_blank">Spark Records documentation</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="RecordBuilder[Input,Data&lt;:Product,Rec&lt;:com.swoop.spark.records.Record[Data,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilderLike[Rec,Ctx]withBuildContext[Ctx]"></a>
+      <a id="RecordBuilder[Input,Data&lt;:Product,Rec&lt;:Record[Data,_],Ctx&lt;:JobContext]:RecordBuilder[Input,Data,Rec,Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RecordBuilder.html"><span class="name">RecordBuilder</span></a><span class="tparams">[<span name="Input">Input</span>, <span name="Data">Data &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a></span>, <span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[<span class="extype" name="com.swoop.spark.records.RecordBuilder.Data">Data</span>, _]</span>, <span name="Ctx">Ctx &lt;: <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a></span>]</span><span class="result"> extends <a href="RecordBuilderLike.html" class="extype" name="com.swoop.spark.records.RecordBuilderLike">RecordBuilderLike</a>[<span class="extype" name="com.swoop.spark.records.RecordBuilder.Rec">Rec</span>, <span class="extype" name="com.swoop.spark.records.RecordBuilder.Ctx">Ctx</span>] with <a href="BuildContext.html" class="extype" name="com.swoop.spark.records.BuildContext">BuildContext</a>[<span class="extype" name="com.swoop.spark.records.RecordBuilder.Ctx">Ctx</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordBuilder[Input,Data&lt;:Product,Rec&lt;:com.swoop.spark.records.Record[Data,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsRecordBuilderLike[Rec,Ctx]withBuildContext[Ctx]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base class for record builders of single records.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for record builders of single records.
+</p></div><dl class="paramcmts block"><dt class="tparam">Input</dt><dd class="cmt"><p>The source input</p></dd><dt class="tparam">Data</dt><dd class="cmt"><p>The record data</p></dd><dt class="tparam">Rec</dt><dd class="cmt"><p>The record</p></dd><dt class="tparam">Ctx</dt><dd class="cmt"><p>The job context</p></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordBuilderLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="RecordBuilderLike[Rec&lt;:com.swoop.spark.records.Record[_,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsBuildsRecords[Rec]withHasJobContext[Ctx]withThrowsErrors"></a>
+      <a id="RecordBuilderLike[Rec&lt;:Record[_,_],Ctx&lt;:JobContext]:RecordBuilderLike[Rec,Ctx]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RecordBuilderLike.html"><span class="name">RecordBuilderLike</span></a><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>, <span name="Ctx">Ctx &lt;: <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a></span>]</span><span class="result"> extends <a href="BuildsRecords.html" class="extype" name="com.swoop.spark.records.BuildsRecords">BuildsRecords</a>[<span class="extype" name="com.swoop.spark.records.RecordBuilderLike.Rec">Rec</span>] with <a href="HasJobContext.html" class="extype" name="com.swoop.spark.records.HasJobContext">HasJobContext</a>[<span class="extype" name="com.swoop.spark.records.RecordBuilderLike.Ctx">Ctx</span>] with <a href="ThrowsErrors.html" class="extype" name="com.swoop.spark.records.ThrowsErrors">ThrowsErrors</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordBuilderLike[Rec&lt;:com.swoop.spark.records.Record[_,_],Ctx&lt;:com.swoop.spark.records.JobContext]extendsBuildsRecords[Rec]withHasJobContext[Ctx]withThrowsErrors" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base class for single and composite record builders.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for single and composite record builders.
+</p></div><dl class="paramcmts block"><dt class="tparam">Rec</dt><dd class="cmt"><p>The record</p></dd><dt class="tparam">Ctx</dt><dd class="cmt"><p>The job context</p></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RecordEnvironmentextendsSerializable"></a>
+      <a id="RecordEnvironment:RecordEnvironment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RecordEnvironment.html"><span class="name">RecordEnvironment</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordEnvironmentextendsSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base trait for the implicits that provide hints about how records are persisted.</p>
+    </li><li name="com.swoop.spark.records.RecordsDataFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RecordsDataFrameextendsRootCauseAnalysisOps"></a>
+      <a id="RecordsDataFrame:RecordsDataFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RecordsDataFrame.html"><span class="name">RecordsDataFrame</span></a><span class="result"> extends <a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsDataFrameextendsRootCauseAnalysisOps" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides root cause analysis operations at the record level.</p>
+    </li><li name="com.swoop.spark.records.RecordsRichDataset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RecordsRichDataset[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsAnyRef"></a>
+      <a id="RecordsRichDataset[Rec&lt;:Record[_,_]]:RecordsRichDataset[Rec]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RecordsRichDataset.html"><span class="name">RecordsRichDataset</span></a><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichDataset[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implicit operations on Spark Records datasets.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit operations on Spark Records datasets.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordsRichOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RecordsRichOption[A]extendsAnyVal"></a>
+      <a id="RecordsRichOption[A]:RecordsRichOption[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RecordsRichOption.html"><span class="name">RecordsRichOption</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyVal" class="extype" target="_top">AnyVal</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichOption[A]extendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extends <span class="extype" name="Option">Option</span> with record building sugar.</p>
+    </li><li name="com.swoop.spark.records.RecordsRichTry" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RecordsRichTry[A]extendsAnyVal"></a>
+      <a id="RecordsRichTry[A]:RecordsRichTry[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RecordsRichTry.html"><span class="name">RecordsRichTry</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyVal" class="extype" target="_top">AnyVal</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichTry[A]extendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extends <span class="extype" name="scala.util.Try">scala.util.Try</span> with record building sugar.</p>
+    </li><li name="com.swoop.spark.records.RecordsRichTryOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RecordsRichTryOption[A]extendsAnyVal"></a>
+      <a id="RecordsRichTryOption[A]:RecordsRichTryOption[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RecordsRichTryOption.html"><span class="name">RecordsRichTryOption</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyVal" class="extype" target="_top">AnyVal</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichTryOption[A]extendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extends <span class="extype" name="scala.util.Try">scala.util.Try</span> with optional values with record building sugar.</p>
+    </li><li name="com.swoop.spark.records.RootCauseAnalysis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RootCauseAnalysisextendsRootCauseAnalysisOps"></a>
+      <a id="RootCauseAnalysis:RootCauseAnalysis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RootCauseAnalysis.html"><span class="name">RootCauseAnalysis</span></a><span class="result"> extends <a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RootCauseAnalysisextendsRootCauseAnalysisOps" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides root cause analysis operations at any level by automatically dispatching
+to <a href="RecordsDataFrame.html" class="extype" name="com.swoop.spark.records.RecordsDataFrame">RecordsDataFrame</a> or <a href="IssuesDataFrame.html" class="extype" name="com.swoop.spark.records.IssuesDataFrame">IssuesDataFrame</a> based on the schema of the provided
+dataframe.</p>
+    </li><li name="com.swoop.spark.records.RootCauseAnalysisOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RootCauseAnalysisOpsextendsSerializable"></a>
+      <a id="RootCauseAnalysisOps:RootCauseAnalysisOps"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RootCauseAnalysisOps.html"><span class="name">RootCauseAnalysisOps</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RootCauseAnalysisOpsextendsSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base trait for root cause analysis operations.</p>
+    </li><li name="com.swoop.spark.records.SimpleDriverContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SimpleDriverContextextendsDriverContextwithAccumulatorMetrics"></a>
+      <a id="SimpleDriverContext:SimpleDriverContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleDriverContext.html"><span class="name">SimpleDriverContext</span></a><span class="result"> extends <a href="DriverContext.html" class="extype" name="com.swoop.spark.records.DriverContext">DriverContext</a> with <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@SimpleDriverContextextendsDriverContextwithAccumulatorMetrics" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Basic implementation of <a href="DriverContext.html" class="extype" name="com.swoop.spark.records.DriverContext">DriverContext</a> that uses <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a> and
+includes a convenience factory for creating job contexts.</p><div class="fullcomment"><div class="comment cmt"><p>Basic implementation of <a href="DriverContext.html" class="extype" name="com.swoop.spark.records.DriverContext">DriverContext</a> that uses <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a> and
+includes a convenience factory for creating job contexts.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html#advanced-topics-4-build-context-1" target="_blank">Build Context</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.SimpleJobContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SimpleJobContextextendsJobContextwithAccumulatorMetrics"></a>
+      <a id="SimpleJobContext:SimpleJobContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleJobContext.html"><span class="name">SimpleJobContext</span></a><span class="result"> extends <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a> with <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@SimpleJobContextextendsJobContextwithAccumulatorMetrics" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Basic implementation of <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a> that uses <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Basic implementation of <a href="JobContext.html" class="extype" name="com.swoop.spark.records.JobContext">JobContext</a> that uses <a href="AccumulatorMetrics.html" class="extype" name="com.swoop.spark.records.AccumulatorMetrics">AccumulatorMetrics</a>.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Spark accumulators can be used locally without registration.</p></span></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://swoop-inc.github.io/spark-records/docs.html#advanced-topics-4-build-context-1" target="_blank">Build Context</a></p></span></dd></dl></div>
+    </li><li name="com.swoop.spark.records.StackElement" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StackElementextendsProductwithSerializable"></a>
+      <a id="StackElement:StackElement"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="StackElement.html"><span class="name">StackElement</span></a><span class="params">(<span name="className">className: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="methodName">methodName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="lineNumber">lineNumber: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@StackElementextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple, serializable adapter for <span class="extype" name="StackTraceElement">StackTraceElement</span>.</p>
+    </li><li name="com.swoop.spark.records.ThrowableMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ThrowableMessageextendsThrowablewithFeatureMaskwithProductwithSerializable"></a>
+      <a id="ThrowableMessage:ThrowableMessage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ThrowableMessage.html"><span class="name">ThrowableMessage</span></a><span class="params">(<span name="kind">kind: <a href="Issue$$ThrowableMessageType.html" class="extype" name="com.swoop.spark.records.Issue.ThrowableMessageType">ThrowableMessageType</a></span>, <span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="msgId">msgId: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span> = <span class="symbol">null</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Throwable">Throwable</span> with <a href="FeatureMask.html" class="extype" name="com.swoop.spark.records.FeatureMask">FeatureMask</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@ThrowableMessageextendsThrowablewithFeatureMaskwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base class for throwable diagnostic messages with IDs for quick big data processing.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for throwable diagnostic messages with IDs for quick big data processing.
+</p></div><dl class="paramcmts block"><dt class="param">kind</dt><dd class="cmt"><p>the type of message (error, warning, info or debug)</p></dd><dt class="param">msg</dt><dd class="cmt"><p>the message</p></dd><dt class="param">msgId</dt><dd class="cmt"><p>the optional message ID</p></dd><dt class="param">cause</dt><dd class="cmt"><p>the cause, if the message is being thrown as a result of an exception</p></dd></dl></div>
+    </li><li name="com.swoop.spark.records.ThrowsErrors" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ThrowsErrorsextendsAnyRef"></a>
+      <a id="ThrowsErrors:ThrowsErrors"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ThrowsErrors.html"><span class="name">ThrowsErrors</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@ThrowsErrorsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convenience trait for throwing <a href="ThrowableMessage.html" class="extype" name="com.swoop.spark.records.ThrowableMessage">ThrowableMessage</a>.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="com.swoop.spark.records.FeatureMask" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FeatureMask"></a>
+      <a id="FeatureMask:FeatureMask"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FeatureMask$.html"><span class="name">FeatureMask</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FeatureMask" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.Features" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Features"></a>
+      <a id="Features:Features"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Features$.html"><span class="name">Features</span></a><span class="result"> extends <a href="Features.html" class="extype" name="com.swoop.spark.records.Features">Features</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@Features" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.Issue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Issue"></a>
+      <a id="Issue:Issue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Issue$.html"><span class="name">Issue</span></a><span class="result"> extends <a href="ThrowsErrors.html" class="extype" name="com.swoop.spark.records.ThrowsErrors">ThrowsErrors</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@Issue" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.Record" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Record"></a>
+      <a id="Record:Record"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Record$.html"><span class="name">Record</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@Record" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.RootCauseAnalysis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RootCauseAnalysis"></a>
+      <a id="RootCauseAnalysis:RootCauseAnalysis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RootCauseAnalysis$.html"><span class="name">RootCauseAnalysis</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RootCauseAnalysis" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.SimpleDriverContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SimpleDriverContext"></a>
+      <a id="SimpleDriverContext:SimpleDriverContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleDriverContext$.html"><span class="name">SimpleDriverContext</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@SimpleDriverContext" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.SimpleJobContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SimpleJobContext"></a>
+      <a id="SimpleJobContext:SimpleJobContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleJobContext$.html"><span class="name">SimpleJobContext</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@SimpleJobContext" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records#optionalIssueSeq" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="optionalIssueSeq(issues:Seq[com.swoop.spark.records.Issue]):Option[Seq[com.swoop.spark.records.Issue]]"></a>
+      <a id="optionalIssueSeq(Seq[Issue]):Option[Seq[Issue]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">optionalIssueSeq</span><span class="params">(<span name="issues">issues: <span class="extype" name="scala.Seq">Seq</span>[<a href="Issue.html" class="extype" name="com.swoop.spark.records.Issue">Issue</a>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Seq">Seq</span>[<a href="Issue.html" class="extype" name="com.swoop.spark.records.Issue">Issue</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@optionalIssueSeq(issues:Seq[com.swoop.spark.records.Issue]):Option[Seq[com.swoop.spark.records.Issue]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convenience conversion to make issue saving during record creation easier.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

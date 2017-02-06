@@ -1,0 +1,385 @@
+<html><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>Spark Records</title><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="bulletproof Spark jobs" /><meta name="author" content="Swoop" /><meta name="og:image" content="/spark-records/img/poster.png" /><meta name="og:title" content="Spark Records" /><meta name="og:site_name" content="Spark Records" /><meta name="og:url" content="http://www.swoop.com" /><meta name="og:type" content="website" /><meta name="og:description" content="bulletproof Spark jobs" /><meta name="twitter:image" content="/spark-records/img/poster.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="" /><link rel="icon" type="image/png" href="/spark-records/img/favicon.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/spark-records/highlight/styles/tomorrow.css" /><link rel="stylesheet" href="/spark-records/css/style.css" /><link rel="stylesheet" href="/spark-records/css/palette.css" /><link rel="stylesheet" href="/spark-records/css/overrides.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/spark-records/" class="brand"><div class="brand-wrapper" style="background:url('/spark-records/img/sidebar_brand.png') no-repeat"><span>Spark Records</span></div></a></li><li><a href="/spark-records/docs.html" class=" active "></a></li><li><a href="/spark-records/css/palette.css" class=" active "></a></li><li><a href="/spark-records/css/style.css" class=" active "></a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="hidden-xs"><a href="https://github.com/swoop-inc/spark-records"><i class="fa fa-eye"></i><span>WATCH<span id="eyes" class="label label-default">--</span></span></a></li><li class="hidden-xs"><a href="https://github.com/swoop-inc/spark-records"><i class="fa fa-star-o"></i><span>STARS<span id="stars" class="label label-default">--</span></span></a></li><li><a href="#" onclick="shareSiteTwitter('Spark Records bulletproof Spark jobs');"><i class="fa fa-twitter"></i></a></li><li><a href="#" onclick="shareSiteFacebook('Spark Records bulletproof Spark jobs');"><i class="fa fa-facebook"></i></a></li><li><a href="#" onclick="shareSiteGoogle();"><i class="fa fa-google-plus"></i></a></li></ul></div></div></div></div><div id="content" data-github-owner="swoop-inc" data-github-repo="spark-records"><div class="content-wrapper"><section><h1 id="spark-records-by-example">Spark Records by example</h1>
+
+<p>In this minimum viable example, we will use Spark to double numbers. Even a trivial example of Spark Records demonstrates the power of applying repeatable patterns for data processing.</p>
+
+<p>As always, start with some imports.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">com.swoop.spark.records._</span>
+<span class="k">import</span> <span class="nn">com.swoop.spark.records._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+</code></pre>
+</div>
+
+<p>Define a case class for the output data, which is just a number in this case.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Number</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
+<span class="n">defined</span> <span class="k">class</span> <span class="nc">Number</span>
+</code></pre>
+</div>
+
+<p>Define the record envelope that will wrap the data.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">NumberRecord</span><span class="o">(</span>
+     <span class="o">|</span>   <span class="n">features</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span>
+     <span class="o">|</span>   <span class="n">data</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Number</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span><span class="o">,</span>
+     <span class="o">|</span>   <span class="n">source</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Long</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span><span class="o">,</span>
+     <span class="o">|</span>   <span class="n">flight</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span><span class="o">,</span>
+     <span class="o">|</span>   <span class="n">issues</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Seq</span><span class="o">[</span><span class="kt">Issue</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">None</span>
+     <span class="o">|</span> <span class="o">)</span> <span class="k">extends</span> <span class="nc">Record</span><span class="o">[</span><span class="kt">Number</span>, <span class="kt">Long</span><span class="o">]</span>
+<span class="n">defined</span> <span class="k">class</span> <span class="nc">NumberRecord</span>
+</code></pre>
+</div>
+
+<p>What you see here are the minimum required fields for records:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">features</code> is a bit mask containing various framework and user-provided flags for quick and efficient record categorization &amp; filtering.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">data</code> contains our data. Some error records may have no data, e.g., if the error occurred before the data was created. Some may have data what was successfully built from the input but then determined to be invalid.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">source</code> identifies the input used to create the data. You have complete control over how to use this field. A common strategy is to store an ID uniquely identifying the source or, if there is no such thing and the source is large, e.g., in the case of large JSON input, only store the source with error records.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">flight</code> is an ID that links together the output of one or more Spark jobs that are somehow related. In complex data processing scenarios, flight IDs are often associated with metadata related to the job, e.g., job parameters, cluster configuration, etc. If you don’t manage flights explicitly, Spark Records will automatically provide a random UUIDv4 for each instance of <code class="highlighter-rouge">DriverContext</code>.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">issues</code> supports the structured row-level logging automatically provided by Spark Records. We’ll get into its details later.</p>
+  </li>
+</ul>
+
+<p>Spark Records are extensible: add more fields if you need them. Timestamps, record IDs and schema versioning fields are common.</p>
+
+<p>Now, create the Spark Records builder that will do the difficult job of multiplying the input numbers by 2.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Doubler</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="k">override</span> <span class="k">val</span> <span class="n">jc</span><span class="k">:</span> <span class="kt">JobContext</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">RecordBuilder</span><span class="o">[</span><span class="kt">Long</span>, <span class="kt">Number</span>, <span class="kt">NumberRecord</span>, <span class="kt">JobContext</span><span class="o">](</span><span class="n">n</span><span class="o">,</span> <span class="n">jc</span><span class="o">)</span> <span class="o">{</span>
+     <span class="o">|</span>   <span class="k">def</span> <span class="n">buildData</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Number</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">Number</span><span class="o">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="o">))</span>
+     <span class="o">|</span>   
+     <span class="o">|</span>   <span class="k">def</span> <span class="n">dataRecord</span><span class="o">(</span><span class="n">data</span><span class="k">:</span> <span class="kt">Number</span><span class="o">,</span> <span class="n">issues</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Issue</span><span class="o">])</span><span class="k">:</span> <span class="kt">NumberRecord</span> <span class="o">=</span> 
+     <span class="o">|</span>     <span class="nc">NumberRecord</span><span class="o">(</span><span class="n">features</span><span class="o">,</span> <span class="nc">Some</span><span class="o">(</span><span class="n">data</span><span class="o">),</span> <span class="nc">Some</span><span class="o">(</span><span class="n">n</span><span class="o">),</span> <span class="n">jc</span><span class="o">.</span><span class="n">flight</span><span class="o">,</span> <span class="n">issues</span><span class="o">)</span>
+     <span class="o">|</span>   
+     <span class="o">|</span>   <span class="k">def</span> <span class="n">errorRecord</span><span class="o">(</span><span class="n">issues</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Issue</span><span class="o">])</span><span class="k">:</span> <span class="kt">NumberRecord</span> <span class="o">=</span> 
+     <span class="o">|</span>     <span class="nc">NumberRecord</span><span class="o">(</span><span class="n">features</span><span class="o">,</span> <span class="n">maybeData</span><span class="o">,</span> <span class="nc">Some</span><span class="o">(</span><span class="n">n</span><span class="o">),</span> <span class="n">jc</span><span class="o">.</span><span class="n">flight</span><span class="o">,</span> <span class="n">issues</span><span class="o">)</span>
+     <span class="o">|</span> <span class="o">}</span>
+<span class="n">defined</span> <span class="k">class</span> <span class="nc">Doubler</span>
+</code></pre>
+</div>
+
+<p>In the snippet above, <code class="highlighter-rouge">buildData</code> does all the work. It returns an <code class="highlighter-rouge">Option</code> because in the general case you may choose to not generate records for some input data. <code class="highlighter-rouge">dataRecord</code> and <code class="highlighter-rouge">errorRecord</code> are there to provide fine-grained control over how records are emitted. Ignore <code class="highlighter-rouge">JobContext</code> for now. It provides various services to the builder but we won’t use any of them in this simple example.</p>
+
+<p>We are ready to start Spark and prepare for transforming data.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">().</span><span class="n">master</span><span class="o">(</span><span class="s">"local"</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="n">spark</span><span class="k">:</span> <span class="kt">org.apache.spark.sql.SparkSession</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="k">@</span><span class="mf">2f55061d</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">dc</span> <span class="k">=</span> <span class="nc">SimpleDriverContext</span><span class="o">(</span><span class="n">spark</span><span class="o">)</span>
+<span class="n">dc</span><span class="k">:</span> <span class="kt">com.swoop.spark.records.SimpleDriverContext</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">swoop</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="nc">SimpleDriverContext</span><span class="k">@</span><span class="mi">11</span><span class="n">c9e197</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">jc</span> <span class="k">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">jobContext</span><span class="o">(</span><span class="nc">SimpleJobContext</span><span class="o">)</span>
+<span class="n">jc</span><span class="k">:</span> <span class="kt">com.swoop.spark.records.SimpleJobContext</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">swoop</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="nc">SimpleJobContext</span><span class="k">@</span><span class="mi">26</span><span class="n">ba3449</span>
+</code></pre>
+</div>
+
+<p>The reason you see both a <code class="highlighter-rouge">DriverContext</code> and a <code class="highlighter-rouge">JobContext</code> is developer workflow optimization. If you can to construct a <code class="highlighter-rouge">JobContext</code> without needing <code class="highlighter-rouge">SparkSession</code>, <code class="highlighter-rouge">SparkContext</code> or <code class="highlighter-rouge">SQLContext</code> you can have very fast unit tests that are not slowed down by Spark initialization and overhead. It’s the job of <code class="highlighter-rouge">DriverContext</code> to deal with Spark. It sets up variable broadcasting, registers accumulators, etc. That’s why Spark Records integration tests start by creating a driver context.</p>
+
+<p>Create a records dataset and force it to be evaluated by invoking the <code class="highlighter-rouge">count</code> action.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">records</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">).</span><span class="n">flatMap</span><span class="o">(</span><span class="n">n</span> <span class="k">=&gt;</span> <span class="nc">Doubler</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">jc</span><span class="o">).</span><span class="n">build</span><span class="o">)</span>
+<span class="n">records</span><span class="k">:</span> <span class="kt">org.apache.spark.sql.Dataset</span><span class="o">[</span><span class="kt">NumberRecord</span><span class="o">]</span> <span class="k">=</span> <span class="o">[</span><span class="kt">features:</span> <span class="kt">int</span>, <span class="kt">data:</span> <span class="kt">struct&lt;n:</span> <span class="kt">bigint&gt;</span> <span class="kt">...</span> <span class="err">3</span> <span class="kt">more</span> <span class="kt">fields</span><span class="o">]</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">assert</span><span class="o">(</span><span class="n">records</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>Hmm, we could have doubled numbers with a single line in Spark: <code class="highlighter-rouge">spark.range(0, 10).map(n =&gt; Number(2 * n))</code>. What have we gained from the dozen or so extra lines that Spark Records requires?</p>
+
+<p>For starters, we’ve gained an automatic metrics collection capability.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">jc</span><span class="o">.</span><span class="n">printStats</span><span class="o">()</span>
+<span class="n">input</span><span class="o">.</span><span class="n">count</span><span class="k">:</span> <span class="err">10</span>
+<span class="kt">issue.count:</span> <span class="err">0</span>
+<span class="kt">record.count:</span> <span class="err">10</span>
+<span class="kt">record.data.count:</span> <span class="err">10</span>
+<span class="kt">record.features.</span><span class="err">0</span><span class="kt">:</span> <span class="err">10</span>
+</code></pre>
+</div>
+
+<p>Metrics are immediately available whether job execution succeeds of fails because they are implemented using Spark accumulators. You don’t have to worry about the slowdown caused by chatting to a remote collection service or the complexity of having to query the data after the job completes. You also don’t have to fret about what will happen to your remote collection endpoint if you suddenly started processing a complex job on a 1,000 node cluster. Collect your own metrics using <code class="highlighter-rouge">jc.inc()</code>.</p>
+
+<p>Automatic metrics collection enables automatic data quality checks. In this case, we expect 10 inputs, no errors and no skipped inputs. (A skipped input is one where no record is emitted and no error is generated.)</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">jc</span><span class="o">.</span><span class="n">checkDataQuality</span><span class="o">(</span><span class="n">minInputs</span> <span class="k">=</span> <span class="mi">10</span><span class="o">,</span> <span class="n">maxErrorRate</span> <span class="k">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">maxSkippedRate</span> <span class="k">=</span> <span class="mi">0</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>As expected, the data quality check passed. Had it failed, we would have gotten an exception.</p>
+
+<p>Anyway, let’s double check to make sure that we don’t have any error records.</p>
+
+<p>That brings up the question of what is an error record. It’s a record whose <code class="highlighter-rouge">features</code> has the bit for <code class="highlighter-rouge">Features.ERROR</code> set. (That happens to be the least significant bit, <code class="highlighter-rouge">1</code>). The simplest way to find the error records would to be scan all the data but there are more efficient ways to store Spark records that make error record identification very fast, e.g., through partitioning. So, how can Spark Records know the best way to look for the error records? The answer lies in <em>record environments</em>, which implicitly provide a hint to the framework without cluttering APIs with extra parameters.</p>
+
+<p>In our simple example we did not use partitioning so we are in a flat record environment. Had we used partitioning, we’d create an implicit <code class="highlighter-rouge">PartitionedRecordEnvironment</code>.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">env</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FlatRecordEnvironment</span><span class="o">()</span>
+<span class="n">env</span><span class="k">:</span> <span class="kt">com.swoop.spark.records.FlatRecordEnvironment</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">swoop</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="nc">FlatRecordEnvironment</span><span class="k">@</span><span class="mi">1</span><span class="n">e2c9a2a</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">assert</span><span class="o">(</span><span class="n">records</span><span class="o">.</span><span class="n">errorRecords</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>Spark Records extended the Dataset API with an <code class="highlighter-rouge">errorRecords</code> method, saving us from having to type:</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">records</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">r</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">features</span> <span class="o">&amp;</span> <span class="nc">Features</span><span class="o">.</span><span class="nc">ERROR</span><span class="o">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>Or, if the records were partitioned the way we do it at <a href="https://www.swoop.com">Swoop</a>:</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">records</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="ss">'par_cat </span><span class="o">===</span> <span class="s">"bad"</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>Let’s take a look at the records schema.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">records</span><span class="o">.</span><span class="n">printSchema</span>
+<span class="n">root</span>
+ <span class="o">|--</span> <span class="n">features</span><span class="k">:</span> <span class="kt">integer</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|--</span> <span class="n">data</span><span class="k">:</span> <span class="kt">struct</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|--</span> <span class="n">n</span><span class="k">:</span> <span class="kt">long</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|--</span> <span class="n">source</span><span class="k">:</span> <span class="kt">long</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|--</span> <span class="n">flight</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|--</span> <span class="n">issues</span><span class="k">:</span> <span class="kt">array</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|--</span> <span class="n">element</span><span class="k">:</span> <span class="kt">struct</span> <span class="o">(</span><span class="kt">containsNull</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">category</span><span class="k">:</span> <span class="kt">integer</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">message</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">causes</span><span class="k">:</span> <span class="kt">array</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">element</span><span class="k">:</span> <span class="kt">struct</span> <span class="o">(</span><span class="kt">containsNull</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">message</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">stack</span><span class="k">:</span> <span class="kt">array</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">element</span><span class="k">:</span> <span class="kt">struct</span> <span class="o">(</span><span class="kt">containsNull</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">className</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">methodName</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">fileName</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">lineNumber</span><span class="k">:</span> <span class="kt">integer</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">id</span><span class="k">:</span> <span class="kt">integer</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+ <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">details</span><span class="k">:</span> <span class="kt">string</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+
+</code></pre>
+</div>
+
+<p>Everything is pretty simple until you get to <code class="highlighter-rouge">issues</code> where you see triple-nested arrays of issues, causes and stack trace elements. Don’t worry, just as with <code class="highlighter-rouge">errorRecords()</code>, Spark Records provides enough sugar to make root cause analysis using <code class="highlighter-rouge">issues</code> data sweet. We’ll see this in the next example.</p>
+
+<p>If you peek at the records, you’ll see they all share the same automatically-generated flight ID.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">records</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+<span class="o">+--------+----+------+------------------------------------+------+</span>
+<span class="o">|</span><span class="n">features</span><span class="o">|</span><span class="n">data</span><span class="o">|</span><span class="n">source</span><span class="o">|</span><span class="n">flight</span>                              <span class="o">|</span><span class="n">issues</span><span class="o">|</span>
+<span class="o">+--------+----+------+------------------------------------+------+</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">0</span><span class="o">]</span> <span class="o">|</span><span class="mi">0</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">2</span><span class="o">]</span> <span class="o">|</span><span class="mi">1</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">4</span><span class="o">]</span> <span class="o">|</span><span class="mi">2</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">6</span><span class="o">]</span> <span class="o">|</span><span class="mi">3</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">8</span><span class="o">]</span> <span class="o">|</span><span class="mi">4</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">10</span><span class="o">]|</span><span class="mi">5</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">12</span><span class="o">]|</span><span class="mi">6</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">14</span><span class="o">]|</span><span class="mi">7</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">16</span><span class="o">]|</span><span class="mi">8</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>       <span class="o">|[</span><span class="err">18</span><span class="o">]|</span><span class="mi">9</span>     <span class="o">|</span><span class="n">ab73f91f</span><span class="o">-</span><span class="mf">0d</span><span class="mi">99</span><span class="o">-</span><span class="mi">4</span><span class="n">a62</span><span class="o">-</span><span class="n">b2b4</span><span class="o">-</span><span class="mi">0213404</span><span class="n">cec6f</span><span class="o">|</span><span class="kc">null</span>  <span class="o">|</span>
+<span class="o">+--------+----+------+------------------------------------+------+</span>
+
+</code></pre>
+</div>
+
+<p>If you want just the data and you are in a flat record environment, you could use <code class="highlighter-rouge">flatMap</code>.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">records</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">data</span><span class="o">).</span><span class="n">printSchema</span>
+<span class="n">root</span>
+ <span class="o">|--</span> <span class="n">n</span><span class="k">:</span> <span class="kt">long</span> <span class="o">(</span><span class="kt">nullable</span> <span class="o">=</span> <span class="kt">true</span><span class="o">)</span>
+
+</code></pre>
+</div>
+
+<p>Alternatively, you could use an implicit method enabled by the record environment that will work regardless of whether your data is flat or partitioned.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="n">records</span><span class="o">.</span><span class="n">recordData</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="o">+---+</span>
+<span class="o">|</span>  <span class="n">n</span><span class="o">|</span>
+<span class="o">+---+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">8</span><span class="o">|</span>
+<span class="o">|</span> <span class="mi">10</span><span class="o">|</span>
+<span class="o">|</span> <span class="mi">12</span><span class="o">|</span>
+<span class="o">|</span> <span class="mi">14</span><span class="o">|</span>
+<span class="o">|</span> <span class="mi">16</span><span class="o">|</span>
+<span class="o">|</span> <span class="mi">18</span><span class="o">|</span>
+<span class="o">+---+</span>
+
+</code></pre>
+</div>
+
+<p>Bulletproof execution, row-level logging, automatic metrics collection and data quality checks don’t matter much if the problems are so simple that input data is always valid and squeaky clean and that code is bug-free. Spark Records really shines in more complex real-world situations.</p>
+
+<h1 id="real-world-problems">Real world problems</h1>
+
+<p>Real-world data transformation problems are messy. Data may be dirty or invalid or come from untrusted sources. Some failures are to be expected and should be ignored. However, code complexity ensures there will occasionally be unexpected failures and those must be investigated swiftly. To demonstrate how Spark Records helps with these problems, we’ve included a more complex example as part of the test code of the framework in <a href="https://github.com/swoop-inc/spark-records/blob/master/src/test/scala/examples/fancy_numbers/"><code class="highlighter-rouge">examples.fancy_numbers</code></a>. The best way to follow the example is through <a href="fancy_numbers_example.html">this notebook</a>.</p>
+
+<h1 id="root-cause-analysis">Root cause analysis</h1>
+
+<p>The example in the previous section outlines the typical root cause analysis workflow with Spark Records-based data:</p>
+
+<ol>
+  <li>
+    <p>Look for high-level problems in the metrics collected during job execution.</p>
+  </li>
+  <li>
+    <p>Get an overview of the issues across all records or just error records, depending on what type of problem you are investigating.</p>
+  </li>
+  <li>
+    <p>Partition issues into known/expected ones and unknown/unexpected ones.</p>
+  </li>
+  <li>
+    <p>Filter error records to the latter group and drill into error details of the unknown/unexpected issues.</p>
+  </li>
+  <li>
+    <p>Mitigate based on the findings.</p>
+  </li>
+  <li>
+    <p>When you have the time, modify your builder code to associate the previously unknown issues with issue IDs so that they become positively identifiable in the future.</p>
+  </li>
+</ol>
+
+<p>Spark Records supports this workflow through a number of implicit extensions to <code class="highlighter-rouge">DataFrame</code> and <code class="highlighter-rouge">Dataset[A]</code>. You can find them in the <code class="highlighter-rouge">com.swoop.spark.records</code> <a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/package.scala">package object</a>.</p>
+
+<p>In addition to using the Spark Records tooling, you can perform your own advanced root cause analysis directly on the data. In <a href="advanced_root_cause_analysis.html">this notebook</a> you’ll see this done with SparkSQL and Python.</p>
+
+<h1 id="testing">Testing</h1>
+
+<p>See the <a href="https://github.com/swoop-inc/spark-records/blob/master/src/test/scala/examples/fancy_numbers/">testing documentation</a> for the fancy numbers example.</p>
+
+<h1 id="advanced-topics">Advanced topics</h1>
+
+<h2 id="composite-builders">Composite builders</h2>
+
+<p>In some situations data transformation requires producing more than one “row” of data for each input “row”. Typically, this happens when the inputs have been grouped in some way. Spark Record supports this use case with composite builders:</p>
+
+<ul>
+  <li>
+    <p>At the top level, create a builder that extends <a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/CompositeRecordBuilder.scala"><code class="highlighter-rouge">CompositeRecordBuilder</code></a>.</p>
+  </li>
+  <li>
+    <p>Implement <code class="highlighter-rouge">recordBuilder()</code> to construct a subclass of <a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/NestedRecordBuilder.scala"><code class="highlighter-rouge">NestedRecordBuilder</code></a>, which will build one output record. A nested record builder is identical to <code class="highlighter-rouge">RecordBuilder</code> with the exception that it does not increment the <code class="highlighter-rouge">input.count</code> metric when <code class="highlighter-rouge">build()</code> is called.</p>
+  </li>
+  <li>
+    <p>Implement <code class="highlighter-rouge">buildRecords()</code> where you break up the input data and call <code class="highlighter-rouge">buildPartition()</code> with each input to get a record. Behind the covers, <code class="highlighter-rouge">buildPartition()</code> calls <code class="highlighter-rouge">recordBuider()</code>.</p>
+  </li>
+</ul>
+
+<h2 id="build-context">Build context</h2>
+
+<p>To enable simple yet flexible record building Spark Records includes three types of build context:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/DriverContext.scala"><code class="highlighter-rouge">DriverContext</code></a> that deals with Spark-related initialization.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/JobContext.scala"><code class="highlighter-rouge">JobContext</code></a>, which provides metrics and flight tracking services for record building and, ideally, does not interact with Spark context directly in order to allow for fast Spark-less tests.</p>
+  </li>
+  <li>
+    <p>The builder instance itself, which exposes the job context and provides APIs for accumulating feature flags and issues. In a complex use case, you’d probably want to break up record building code across several classes and/or modules. Rather than having to make these dependent on the exact type of builder you are using, it’s better to have them depend on <a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/records/BuildContext.scala"><code class="highlighter-rouge">BuildContext</code></a>, which is a clean trait that aggregates the services provided by a builder. One could argue that it is bad design to have a builder instance expose one public API for building records to its clients and another to objects it uses to build records. That may be true in theory but, in our experience, even with very sophisticated builders, the added complexity and overhead of a “more OO” design simply leads to more complex code and more boilerplate with no practical benefits.</p>
+  </li>
+</ul>
+
+<h1 id="best-practices">Best practices</h1>
+
+<h2 id="data-partitioning">Data partitioning</h2>
+
+<p>Real-world production scenarios require the efficient separation of error records from records with valid data. That’s best done through partitioning. All records where <code class="highlighter-rouge">(features &amp; Features.ERROR) != 0</code> go to one partition and the rest go to one or more other partitions. Filtering data with Spark based on partitions is extremely fast: Spark only looks at the files from partition directories that are part of the query.</p>
+
+<p>At <a href="https://www.swoop.com">Swoop</a>, all of our big production tables include at least two levels of partitioning.</p>
+
+<p>The first is for time, using a <code class="highlighter-rouge">yyyymmddhhmm</code> format which enables fast range queries as well as variable persistence granularity. We use the standard name <code class="highlighter-rouge">par_ts</code> for the time partitioning column.</p>
+
+<p>The second partitioning column, <code class="highlighter-rouge">par_cat</code>, is for the “category” of records. We choose the category based on follow-on query use cases and the natural skew of the data, which we also manage that through controlling Parquet file output size. We have reserved the category value <code class="highlighter-rouge">bad</code> for error records.</p>
+
+<p>This follows another data pattern called Resilient Partitioned Tables (RPTs). By adopting a standardized approach, we get better framework and tooling support and we write less code.</p>
+
+<h2 id="idempotent-jobs">Idempotent jobs</h2>
+
+<p>98+% of Spark job failures we see are overwhelmingly related to some type of cloud I/O problem (S3 consistency violation, inaccessible database, etc.) or occasionally related to a core Spark failures, e.g., the driver inexplicably dying. These errors are transient; they self-correct. It doesn’t make sense to spend any time performing root cause analysis if simply re-running the job would fix the problem…</p>
+
+<p>…assuming, of course, that you can re-run the job without any ill consequence. To do this, the job has to be <a href="http://stackoverflow.com/questions/1077412/what-is-an-idempotent-operation">idempotent</a>. Next to correctness, idempotency may be the most desirable property of big data jobs because it makes reasoning about a job’s side effects easy and it makes dealing with operational failures easy: 49 out of 50 times the problem will go away if you re-run the job. Better, have your scheduler or cluster controller automatically re-run the job.</p>
+
+<p>While it is not easy to define exactly what makes a Spark job idempotent, it is very easy to point out two operations that definitely make jobs <em>not</em> idempotent. (The following comments apply to I/O targets that are not transactional.)</p>
+
+<p>The first no-no operation is appending data. Without <a href="https://en.wikipedia.org/wiki/ACID">ACIDity</a>, an append operation that fails midway could leave your data in an inconsistent state. That’s not the biggest problem, though. The biggest problem is that re-running the operation will likely make things worse, e.g., duplicate data. Instead of appending data, use updates in target sources that support them. If the target source does not support updates, e.g., Spark tables, you have to use partitioning and then simulate an update by overwriting a subset of the partitions. Alas, this doesn’t always lead to a fully satisfying solution because…</p>
+
+<p>…the second no-no operation is overwriting files that another job may depend on. When you start job output in overwrite mode, Spark deletes all files in the target path. Output can take a long time. Any jobs that depend on the previous data being there will fail. Worse, it is possible that a job could use partially-written data and produce incorrect results.</p>
+
+<p>The easiest way to solve the overwrite problem in Spark is by not having to solve it, which requires ensuring that for the duration of a job that will overwrite some data, no other job would attempt to use the data. If you cannot do that, you have to use some type of indirection, either by manually managing partitioning or through views. It’s not trivial but it is well-worth the effort because it makes for a much more predictable and reliable operating environment.</p>
+
+<h2 id="templatize-rca">Templatize RCA</h2>
+
+<p>If an automatic re-run of your job still causes a failure, it may be time for a human to get involved. To speed up root cause analysis it helps to create notebooks that take simple parameters such as the output path or the table name where the data is and then execute the types of root cause analysis queries you are interested in. This way you can kick off an investigation and come back in a minute to see all kinds of useful output.</p>
+
+<h2 id="run-jobs-from-notebooks">Run jobs from notebooks</h2>
+
+<p>We don’t mean you should run jobs manually but that, however you kick off jobs, you should collect job-output in a notebook-like format and not in log files.</p>
+
+<p>At <a href="https://www.swoop.com">Swoop</a> we don’t like spelunking into log files. While we write our jobs in libraries, we prefer to kick them off in a notebook because the notebook contains an easily consumable record of the job execution. Typically, we print the metrics collected during job execution and list all generated output files. It’s amazing how quickly humans can notice patterns if relevant information is presented in an easy-to-consume manner. Log files can’t do that and the Spark UI can’t either.</p>
+
+<h2 id="catch-job-exceptions">Catch job exceptions</h2>
+
+<p>In the <a href="fancy_numbers_example.html">fancy numbers example</a>, when the data quality check failed execution stopped before we could print the collected metrics. You’d save time and get helpful decision making context if you catch job failures and execute some number of information gathering steps regardless of whether the job is a success of failure. As mentioned in the previous point, at minimum we output collected metrics and generated files.</p>
+
+<p>An easy way to do this in Scala is with <code class="highlighter-rouge">scala.util.Try</code>. If you are not familiar with it, see <a href="http://danielwestheide.com/blog/2012/12/26/the-neophytes-guide-to-scala-part-6-error-handling-with-try.html">this post</a>.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">jobResult</span> <span class="k">=</span> <span class="nc">Try</span><span class="o">(</span><span class="n">runJob</span><span class="o">(</span><span class="n">driverContext</span><span class="o">))</span>
+
+<span class="n">driverContext</span><span class="o">.</span><span class="n">printStats</span>
+
+<span class="c1">// You'll get the result of runJob() or the exception thrown by it
+</span><span class="k">val</span> <span class="n">jobOutput</span> <span class="k">=</span> <span class="n">jobResult</span><span class="o">.</span><span class="n">get</span>
+</code></pre>
+</div>
+
+<h2 id="rca-on-job-failure">RCA on job failure</h2>
+
+<p>If:</p>
+
+<ul>
+  <li>you can catch job exceptions, and if</li>
+  <li>you can know whether this job run is the last allowed re-try of a previously failed run, and if</li>
+  <li>you have templatized RCA tooling, and if</li>
+  <li>you run your jobs from notebooks, then</li>
+  <li>you can also kick off root cause analysis automatically on job failure.</li>
+</ul>
+
+<p>This way, by the time a human gets the failure alert, all the initial information necessary for deciding how to mitigate has been assembled.</p>
+
+<p>That’s operational big data nirvana.</p>
+
+<h1 id="other-goodies">Other goodies</h1>
+
+<h2 id="by-key-accumulation">By key accumulation</h2>
+
+<p>The metrics collection in Spark Records is enabled by <a href="https://github.com/swoop-inc/spark-records/blob/master/src/main/scala/com/swoop/spark/accumulators/ByKeyAdditiveAccumulator.scala"><code class="highlighter-rouge">ByKeyAdditiveAccumulator</code></a>, which can do a lot of tricks.</p>
+
+<h1 id="api-docs">API docs</h1>
+
+<p>You can find the latest API docs at <a href="latest/api">https://swoop-inc.github.io/spark-records/latest/api</a>.</p>
+</section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/spark-records/highlight/highlight.pack.js"></script><script>hljs.configure({
+languages:['scala','java','bash']
+});
+hljs.initHighlighting();
+             </script><script src="/spark-records/js/automenu.js"></script><script src="/spark-records/js/main.js"></script></body></html>
