@@ -35,7 +35,7 @@ What you see here are the minimum required fields for records:
 
  - `features` is a bit mask containing various framework and user-provided flags for quick and efficient record categorization & filtering.
 
- - `data` contains our data. Some error records may have no data, e.g., if the error occurred before the data was created. Some may have data what was successfully built from the input but then determined to be invalid.
+ - `data` contains our data. Some error records may have no data, e.g., if the error occurred before the data was created. Some may have data that was successfully built from the input but then determined to be invalid.
 
  - `source` identifies the input used to create the data. You have complete control over how to use this field. A common strategy is to store an ID uniquely identifying the source or, if there is no such thing and the source is large, e.g., in the case of large JSON input, only store the source with error records.
 
@@ -88,7 +88,7 @@ For starters, we've gained an automatic metrics collection capability.
 jc.printStats()
 ```
 
-Metrics are immediately available whether job execution succeeds of fails because they are implemented using Spark accumulators. You don't have to worry about the slowdown caused by chatting to a remote collection service or the complexity of having to query the data after the job completes. You also don't have to fret about what will happen to your remote collection endpoint if you suddenly started processing a complex job on a 1,000 node cluster. Collect your own metrics using `jc.inc()`.
+Metrics are immediately available whether job execution succeeds or fails because they're implemented using Spark accumulators. You don't have to worry about the slowdown caused by chatting to a remote collection service or the complexity of having to query the data after the job completes. You also don't have to fret about what will happen to your remote collection endpoint if you suddenly start processing a complex job on a 1,000 node cluster. Collect your own metrics using `jc.inc()`.
 
 Automatic metrics collection enables automatic data quality checks. In this case, we expect 10 inputs, no errors and no skipped inputs. (A skipped input is one where no record is emitted and no error is generated.)
 
@@ -100,7 +100,7 @@ As expected, the data quality check passed. Had it failed, we would have gotten 
 
 Anyway, let's double check to make sure that we don't have any error records. 
 
-That brings up the question of what is an error record. It's a record whose `features` has the bit for `Features.ERROR` set. (That happens to be the least significant bit, `1`). The simplest way to find the error records would to be scan all the data but there are more efficient ways to store Spark records that make error record identification very fast, e.g., through partitioning. So, how can Spark Records know the best way to look for the error records? The answer lies in _record environments_, which implicitly provide a hint to the framework without cluttering APIs with extra parameters.
+That brings up the question of what an error record is. It's a record whose `features` has the bit for `Features.ERROR` set. (That happens to be the least significant bit, `1`). The simplest way to find the error records would to be scan all the data but there are more efficient ways to store Spark records that make error record identification very fast, e.g., through partitioning. So, how can Spark Records know the best way to look for the error records? The answer lies in _record environments_, which implicitly provide a hint to the framework without cluttering APIs with extra parameters.
 
 In our simple example we did not use partitioning so we are in a flat record environment. Had we used partitioning, we'd create an implicit `PartitionedRecordEnvironment`.
 
@@ -214,7 +214,7 @@ The first is for time, using a `yyyymmddhhmm` format which enables fast range qu
 
 The second partitioning column, `par_cat`, is for the "category" of records. We choose the category based on follow-on query use cases and the natural skew of the data, which we also manage that through controlling Parquet file output size. We have reserved the category value `bad` for error records.
 
-This follows another data pattern called Resilient Partitioned Tables (RPTs). By adopting a standardized approach, we get better framework and tooling support and we write less code.
+This follows another data pattern called [Resilient Partitioned Tables](https://spark-summit.org/2016/events/bulletproof-jobs-patterns-for-large-scale-spark-processing/) (RPTs). By adopting a standardized approach, we get better framework and tooling support and we write less code.
 
 ## Idempotent jobs
 
