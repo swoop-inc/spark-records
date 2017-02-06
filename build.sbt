@@ -6,6 +6,8 @@ organization := "com.swoop"
 bintrayOrganization := Some("swoop-inc")
 bintrayPackageLabels := Seq("apache", "spark", "apache-spark", "scala", "big-data", "spark-records", "dataset", "swoop")
 
+licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
+
 javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
 scalaVersion := "2.11.8"
