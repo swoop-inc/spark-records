@@ -22,6 +22,18 @@ import org.apache.spark.sql.{Column, DataFrame, Dataset, Encoder, functions => f
 /** Base trait for the implicits that provide hints about how records are persisted. */
 trait RecordEnvironment extends Serializable {
 
+  val REQUIRED_RECORD_FIELDS = Seq("features", "data", "source", "flight", "issues")
+
+  /** Returns any custom fields in the record, beyond [[REQUIRED_RECORD_FIELDS]].
+    *
+    * By default, there are none.
+    */
+  def customRecordFields: Seq[String] = Seq.empty
+
+  /** Returns the concatenation of [[REQUIRED_RECORD_FIELDS]] and [[customRecordFields]].
+    */
+  def allRecordFields: Seq[String] = REQUIRED_RECORD_FIELDS ++ customRecordFields
+
   /** Returns a filter that identifies error records. */
   def errorFilter: Column
 
@@ -41,16 +53,29 @@ trait RecordEnvironment extends Serializable {
   /** Returns a dataset with the data of data records (the record envelope is removed). */
   def recordData[A <: Product, Rec <: Record[A, _]](dsRecords: Dataset[Rec])(implicit enc: Encoder[A]): Dataset[A] =
     dsRecords.flatMap(_.data)
+
 }
 
 
-/** A flat record environment. */
-class FlatRecordEnvironment() extends RecordEnvironment {
+/** A flat record environment.
+  *
+  * @param customRecordFields Any custom fields that are part of the records.
+  */
+class FlatRecordEnvironment(
+  override val customRecordFields: Seq[String] = Seq.empty
+) extends RecordEnvironment {
 
   /** Returns an error filter that selects all records where `features` has the error bit set. */
   def errorFilter: Column = f.col("features").bitwiseAND(Issue.Error.featureMask) =!= 0
 
 }
+
+
+object FlatRecordEnvironment {
+  def apply(customFields: Seq[String] = Seq.empty) =
+    new FlatRecordEnvironment(customFields)
+}
+
 
 /** A partitioned error environment.
   *
@@ -58,8 +83,13 @@ class FlatRecordEnvironment() extends RecordEnvironment {
   *                Conventionally, this is `par_cat`.
   * @param errorValue The category value for the partition with error records.
   *                   Conventionally, this is `bad`.
+  * @param customRecordFields Any custom fields that are part of the records.
   */
-class PartitionedRecordEnvironment(colName: String, errorValue: String) extends RecordEnvironment {
+class PartitionedRecordEnvironment(
+  colName: String,
+  errorValue: String,
+  override val customRecordFields: Seq[String] = Seq.empty
+) extends RecordEnvironment {
 
   /** Returns an error filter that only includes the partitions with error data */
   def errorFilter: Column = f.col(colName) === errorValue
@@ -67,4 +97,10 @@ class PartitionedRecordEnvironment(colName: String, errorValue: String) extends 
   /** Returns an error filter that excludes the partitions with error data */
   override def dataFilter: Column = f.col(colName) =!= errorValue
 
+}
+
+
+object PartitionedRecordEnvironment {
+  def apply(colName: String, errorValue: String, customFields: Seq[String] = Seq.empty) =
+    new PartitionedRecordEnvironment(colName, errorValue, customFields)
 }

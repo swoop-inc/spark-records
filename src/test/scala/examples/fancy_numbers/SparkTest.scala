@@ -14,7 +14,7 @@ class SparkTest extends ExampleSpec with SparkSqlSpec with TestNegative5To100 {
   lazy val records = ds.collect
 
   "in an integration test" - {
-    implicit val env = new FlatRecordEnvironment()
+    implicit val env = FlatRecordEnvironment()
     val sqlContext = sqlc
     import sqlContext.implicits._
 

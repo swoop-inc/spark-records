@@ -105,7 +105,7 @@ That brings up the question of what an error record is. It's a record whose `fea
 In our simple example we did not use partitioning so we are in a flat record environment. Had we used partitioning, we'd create an implicit `PartitionedRecordEnvironment`.
 
 ```tut
-implicit val env = new FlatRecordEnvironment()
+implicit val env = FlatRecordEnvironment()
 assert(records.errorRecords.count == 0)
 ```
 

@@ -45,7 +45,7 @@ trait RootCauseAnalysisOps extends Serializable {
 
 
 /** Provides root cause analysis operations at the record level. */
-class RecordsDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
+class RecordsDataFrame(df: DataFrame, env: RecordEnvironment) extends RootCauseAnalysisOps {
   private val sqlc = df.sqlContext
 
   import sqlc.implicits._
@@ -65,36 +65,32 @@ class RecordsDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
     .withColumn("id_message", f.expr("message_for_issue_id(issue.category, issue.id)"))
 
   def errorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
-    new IssuesDataFrame(issues).errorDetails(stackElementFilter)
+    new IssuesDataFrame(issues, env).errorDetails(stackElementFilter)
 
   def issueCounts: DataFrame =
-    new IssuesDataFrame(issues).issueCounts
+    new IssuesDataFrame(issues, env).issueCounts
 
   def messageCounts: DataFrame =
-    new IssuesDataFrame(issues).messageCounts
+    new IssuesDataFrame(issues, env).messageCounts
 
   def errorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
-    new IssuesDataFrame(issues).errorDetailCounts(stackElementFilter)
+    new IssuesDataFrame(issues, env).errorDetailCounts(stackElementFilter)
 
 }
 
 
 /** Provides root cause analysis operations at the issues level. */
-class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
+class IssuesDataFrame(df: DataFrame, env: RecordEnvironment) extends RootCauseAnalysisOps {
   private val sqlc = df.sqlContext
 
   import sqlc.implicits._
 
-  def records: DataFrame = df
-    .groupBy('record_row_id)
-    .agg(
-      // @todo use flexible record fields
-      f.first('features).as("features"),
-      f.first('data).as("data"),
-      f.first('source).as("source"),
-      f.first('flight).as("flight"),
-      f.first('issues).as("issues")
-    )
+  def records: DataFrame = {
+    val aggregates = env.allRecordFields.map(name => f.first(f.col(name)).as(name))
+    df
+      .groupBy('record_row_id)
+      .agg(aggregates.head, aggregates.tail: _*)
+  }
 
   def issues: DataFrame = df
 
@@ -153,16 +149,8 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
       .orderBy('cnt.desc)
 
   private def sampleRecord = {
-    f.first(f.expr(
-      """
-        |named_struct(
-        |  'features', features,
-        |  'source', source,
-        |  'flight', flight,
-        |  'data', data,
-        |  'issues', issues
-        |)
-      """.stripMargin)).as("sample_record")
+    val structExpr = env.allRecordFields.map(name => s"'$name', $name").mkString("named_struct(", ",", ")")
+    f.first(f.expr(structExpr)).as("sample_record")
   }
 
 }
@@ -172,15 +160,15 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
   * to [[RecordsDataFrame]] or [[IssuesDataFrame]] based on the schema of the provided
   * dataframe.
   */
-class RootCauseAnalysis(df: DataFrame) extends RootCauseAnalysisOps {
+class RootCauseAnalysis(df: DataFrame, env: RecordEnvironment) extends RootCauseAnalysisOps {
 
   RootCauseAnalysis.registerUDFs(df.sqlContext)
 
   lazy val proxy: RootCauseAnalysisOps = {
     // @todo tighter schema validation
     val columns = df.columns
-    if (columns contains "issue") new IssuesDataFrame(df)
-    else new RecordsDataFrame(df)
+    if (columns contains "issue") new IssuesDataFrame(df, env)
+    else new RecordsDataFrame(df, env)
   }
 
   def records: DataFrame = proxy.records

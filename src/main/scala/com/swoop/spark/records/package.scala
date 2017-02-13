@@ -37,23 +37,23 @@ package object records {
     def errorRecords(implicit env: RecordEnvironment): Dataset[Rec] =
       env.errorRecords(underlying)
 
-    def allIssues: DataFrame =
-      new RootCauseAnalysis(underlying.filter(_.issues.isDefined).toDF()).issues
+    def allIssues(implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying.filter(_.issues.isDefined).toDF(), env).issues
 
-    def issueCounts: DataFrame =
+    def issueCounts(implicit env: RecordEnvironment): DataFrame =
       issueCounts(false)
 
-    def issueCounts(showSampleRecord: Boolean): DataFrame =
+    def issueCounts(showSampleRecord: Boolean)(implicit env: RecordEnvironment): DataFrame =
       allIssues.issueCounts(showSampleRecord)
 
-    def messageCounts: DataFrame =
+    def messageCounts(implicit env: RecordEnvironment): DataFrame =
       messageCounts(false)
 
-    def messageCounts(showSampleRecord: Boolean): DataFrame =
+    def messageCounts(showSampleRecord: Boolean)(implicit env: RecordEnvironment): DataFrame =
       allIssues.messageCounts(showSampleRecord)
 
     def errorIssues(implicit env: RecordEnvironment): DataFrame =
-      new RootCauseAnalysis(errorRecords.toDF()).issues
+      new RootCauseAnalysis(errorRecords.toDF(), env).issues
 
     def errorIssueCounts(implicit env: RecordEnvironment): DataFrame =
       errorIssues.issueCounts
@@ -63,7 +63,7 @@ package object records {
 
     def errorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
       (implicit env: RecordEnvironment): DataFrame =
-      new RootCauseAnalysis(errorIssues).errorDetails(stackElementFilter, groupByCols)
+      new RootCauseAnalysis(errorIssues, env).errorDetails(stackElementFilter, groupByCols)
 
     def errorDetails(classNameFragment: String)
       (implicit env: RecordEnvironment): DataFrame =
@@ -71,7 +71,7 @@ package object records {
 
     def errorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
       (implicit env: RecordEnvironment): DataFrame =
-      new RootCauseAnalysis(errorIssues).errorDetailCounts(stackElementFilter, groupByCols)
+      new RootCauseAnalysis(errorIssues, env).errorDetailCounts(stackElementFilter, groupByCols)
 
     def errorDetailCounts(classNameFragment: String)
       (implicit env: RecordEnvironment): DataFrame =
@@ -108,48 +108,52 @@ package object records {
     */
   implicit class RCARichDataFrame(val underlying: DataFrame) {
 
-    def records: DataFrame =
-      new RootCauseAnalysis(underlying).records
+    def records(implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).records
 
-    def issues: DataFrame =
-      new RootCauseAnalysis(underlying).issues
+    def issues(implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).issues
 
-    def issueCounts: DataFrame =
+    def issueCounts(implicit env: RecordEnvironment): DataFrame =
       issueCounts(false)
 
-    def issueCounts(showSampleRecord: Boolean): DataFrame =
-      new RootCauseAnalysis(underlying).issueCounts
+    def issueCounts(showSampleRecord: Boolean)(implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).issueCounts
         .drop(if (showSampleRecord) "" else "sample_record")
 
-    def messageCounts: DataFrame =
+    def messageCounts(implicit env: RecordEnvironment): DataFrame =
       messageCounts(false)
 
-    def messageCounts(showSampleRecord: Boolean): DataFrame =
-      new RootCauseAnalysis(underlying).messageCounts
+    def messageCounts(showSampleRecord: Boolean)(implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).messageCounts
         .drop(if (showSampleRecord) "" else "sample_record")
 
-    def errorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
-      new RootCauseAnalysis(underlying).errorDetails(stackElementFilter, groupByCols)
+    def errorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
+      (implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).errorDetails(stackElementFilter, groupByCols)
 
-    def errorDetails(classNameFragment: String): DataFrame =
+    def errorDetails(classNameFragment: String)(implicit env: RecordEnvironment): DataFrame =
       errorDetails(RootCauseAnalysis.classNameContains(classNameFragment))
 
-    def errorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
-      new RootCauseAnalysis(underlying).errorDetailCounts(stackElementFilter, groupByCols)
+    def errorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
+      (implicit env: RecordEnvironment): DataFrame =
+      new RootCauseAnalysis(underlying, env).errorDetailCounts(stackElementFilter, groupByCols)
 
-    def errorDetailCounts(classNameFragment: String): DataFrame =
+    def errorDetailCounts(classNameFragment: String)(implicit env: RecordEnvironment): DataFrame =
       errorDetailCounts(RootCauseAnalysis.classNameContains(classNameFragment))
 
-    def unknownErrorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
+    def unknownErrorDetails(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
+      (implicit env: RecordEnvironment): DataFrame =
       errorDetails(RootCauseAnalysis.unknownErrors(stackElementFilter), groupByCols)
 
-    def unknownErrorDetails(classNameFragment: String): DataFrame =
+    def unknownErrorDetails(classNameFragment: String)(implicit env: RecordEnvironment): DataFrame =
       unknownErrorDetails(RootCauseAnalysis.classNameContains(classNameFragment)).drop("id_message")
 
-    def unknownErrorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id")): DataFrame =
+    def unknownErrorDetailCounts(stackElementFilter: Column = f.lit(true), groupByCols: Seq[String] = Seq("record_row_id"))
+      (implicit env: RecordEnvironment): DataFrame =
       errorDetailCounts(RootCauseAnalysis.unknownErrors(stackElementFilter), groupByCols)
 
-    def unknownErrorDetailCounts(classNameFragment: String): DataFrame =
+    def unknownErrorDetailCounts(classNameFragment: String)(implicit env: RecordEnvironment): DataFrame =
       unknownErrorDetailCounts(RootCauseAnalysis.classNameContains(classNameFragment)).drop("id_messages")
 
   }
