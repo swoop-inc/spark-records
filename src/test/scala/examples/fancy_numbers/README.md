@@ -24,6 +24,6 @@ The idea is to start with fast local testing that does not depend on Spark and t
 
 **Tip:** If you are dealing with complex state in the Spark driver that your builder will use, it often makes sense to start testing with Spark from the very beginning as that will ensure you catch any dreaded `Task Not Serializable` situations immediately. 
 
-Either way, `~testQuick` and `core/testOnly *MySuite* -- -z "my test"` are lifesavers in `sbt`.
+Either way, `~testQuick` and `testOnly *MySuite* -- -z "my test"` are lifesavers in `sbt`.
 
 Happy testing!
