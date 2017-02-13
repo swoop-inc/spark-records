@@ -18,8 +18,13 @@ package com.swoop.spark.records
 
 import org.apache.spark.sql.{Column, DataFrame, Dataset, Encoder, functions => f}
 
+import scala.annotation.implicitNotFound
+
 
 /** Base trait for the implicits that provide hints about how records are persisted. */
+@implicitNotFound("Unable to find an implicit record environment for this record type. " +
+  "An implicit environment, e.g., FlatRecordEnvironment or PartitionedRecordEnvironment " +
+  "must be visible for many methods in Spark Records to work. Please, create one.")
 trait RecordEnvironment extends Serializable {
 
   val REQUIRED_RECORD_FIELDS = Seq("features", "data", "source", "flight", "issues")
