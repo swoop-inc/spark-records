@@ -88,6 +88,7 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
   def records: DataFrame = df
     .groupBy('record_row_id)
     .agg(
+      // @todo use flexible record fields
       f.first('features).as("features"),
       f.first('data).as("data"),
       f.first('source).as("source"),
@@ -105,6 +106,7 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
     .groupBy(groupByCols.head, groupByCols.tail: _*)
     .agg(
       f.first($"issue.message").as("message"),
+      f.first($"issue.id").as("id"),
       f.first($"id_message").as("id_message"),
       f.first('stack_element).as("location"),
       sampleRecord
@@ -122,15 +124,16 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
         sampleRecord
       )
       .orderBy('category, 'cnt.desc)
-      .drop("category", "id")
+      .drop("category")
 
   def messageCounts: DataFrame =
     df
       .groupBy($"issue.category", $"issue.message")
       .agg(
         f.first('category_type).as("category_type"),
-        f.collect_set('id_message).as("id_messages"),
         f.count("*").as("cnt"),
+        f.collect_set($"issue.id").as("ids"),
+        f.collect_set('id_message).as("id_messages"),
         f.when(f.sum(f.when('id_message.isNull, 1).otherwise(0)) > 0, true).otherwise(false).as("unknown"),
         sampleRecord
       )
@@ -144,6 +147,7 @@ class IssuesDataFrame(df: DataFrame) extends RootCauseAnalysisOps {
         f.count("*").as("cnt"),
         f.collect_set('message).as("messages"),
         f.collect_set('id_message).as("id_messages"),
+        f.collect_set('id).as("ids"),
         f.first('sample_record).as("sample_record")
       )
       .orderBy('cnt.desc)
