@@ -48,12 +48,16 @@ trait RecordEnvironment extends Serializable {
   def dataFilter: Column = f.not(errorFilter)
 
   /** Returns only the error records in the provided dataset */
-  def errorRecords[Rec <: Record[_, _]](dsRecords: Dataset[Rec]): Dataset[Rec] =
+  def errorRecords[Rec](dsRecords: Dataset[Rec])(implicit ev: Rec <:< Record[_, _]): Dataset[Rec] =
     dsRecords.where(errorFilter)
 
+  /** Returns only the error records in the provided dataframe */
+  def errorRecords(dfRecords: DataFrame): DataFrame =
+    dfRecords.where(errorFilter)
+
   /** Returns a dataframe with the data of data records (the record envelope is removed). */
-  def recordDataframe[Rec <: Record[_, _]](dsRecords: Dataset[Rec]): DataFrame =
-    dsRecords.where(dataFilter).select("data.*")
+  def recordData(dfRecords: DataFrame): DataFrame =
+    dfRecords.where(dataFilter).select("data.*")
 
   /** Returns a dataset with the data of data records (the record envelope is removed). */
   def recordData[A <: Product, Rec <: Record[A, _]](dsRecords: Dataset[Rec])(implicit enc: Encoder[A]): Dataset[A] =
