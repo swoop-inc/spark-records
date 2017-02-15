@@ -45,14 +45,14 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">RecordsRichDataset</span><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <span class="name">RecordsRichDataset</span><span class="tparams">[<span name="A">A &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a></span>, <span name="Rec">Rec</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Implicit operations on Spark Records datasets.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="RootCauseAnalysisOps.html" class="extype" name="com.swoop.spark.records.RootCauseAnalysisOps">RootCauseAnalysisOps</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
         
 
@@ -70,7 +70,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.swoop.spark.records.RecordsRichDataset"><span>RecordsRichDataset</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.swoop.spark.records.RecordsRichDataset"><span>RecordsRichDataset</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
                 <span class="filtertype">Implicitly<br />
@@ -95,18 +95,18 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.swoop.spark.records.RecordsRichDataset#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(underlying:org.apache.spark.sql.Dataset[Rec])(implicitevidence$1:org.apache.spark.sql.Encoder[Rec]):com.swoop.spark.records.package.RecordsRichDataset[Rec]"></a>
-      <a id="&lt;init&gt;:RecordsRichDataset[Rec]"></a>
+      <a id="&lt;init&gt;(underlying:org.apache.spark.sql.Dataset[Rec])(implicitevidence$1:org.apache.spark.sql.Encoder[A],implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[A,_]]):com.swoop.spark.records.package.RecordsRichDataset[A,Rec]"></a>
+      <a id="&lt;init&gt;:RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RecordsRichDataset</span><span class="params">(<span name="underlying">underlying: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="org.apache.spark.sql.Encoder">Encoder</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>)</span>
+        <span class="name">RecordsRichDataset</span><span class="params">(<span name="underlying">underlying: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="org.apache.spark.sql.Encoder">Encoder</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>]</span>, <span name="ev">ev: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>, <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, _]]</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@&lt;init&gt;(underlying:org.apache.spark.sql.Dataset[Rec])(implicitevidence$1:org.apache.spark.sql.Encoder[Rec]):com.swoop.spark.records.package.RecordsRichDataset[Rec]" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@&lt;init&gt;(underlying:org.apache.spark.sql.Dataset[Rec])(implicitevidence$1:org.apache.spark.sql.Encoder[A],implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[A,_]]):com.swoop.spark.records.package.RecordsRichDataset[A,Rec]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -171,20 +171,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method any2stringadd in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method any2stringadd in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>any2stringadd</dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-&gt;[B](y:B):(A,B)"></a>
-      <a id="-&gt;[B](B):(RecordsRichDataset[Rec],B)"></a>
+      <a id="-&gt;[B](B):(RecordsRichDataset[A,Rec],B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -192,8 +192,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -217,18 +217,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordsRichDataset#allIssues" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="allIssues:org.apache.spark.sql.DataFrame"></a>
-      <a id="allIssues:DataFrame"></a>
+      <a id="allIssues(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame"></a>
+      <a id="allIssues(RecordEnvironment):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">allIssues</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">allIssues</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@allIssues:org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@allIssues(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -275,14 +275,14 @@
         </dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring((RecordsRichDataset[Rec])⇒Boolean,⇒Any):RecordsRichDataset[Rec]"></a>
+      <a id="ensuring((RecordsRichDataset[A,Rec])⇒Boolean,⇒Any):RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -290,20 +290,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean):A"></a>
-      <a id="ensuring((RecordsRichDataset[Rec])⇒Boolean):RecordsRichDataset[Rec]"></a>
+      <a id="ensuring((RecordsRichDataset[A,Rec])⇒Boolean):RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
@@ -311,20 +311,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring(Boolean,⇒Any):RecordsRichDataset[Rec]"></a>
+      <a id="ensuring(Boolean,⇒Any):RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -332,20 +332,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean):A"></a>
-      <a id="ensuring(Boolean):RecordsRichDataset[Rec]"></a>
+      <a id="ensuring(Boolean):RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@ensuring(cond:Boolean):A" title="Permalink" target="_top">
@@ -353,8 +353,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -567,8 +567,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method StringFormat in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method StringFormat in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -626,69 +626,69 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordsRichDataset#issueCounts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="issueCounts(showSampleRecord:Boolean):org.apache.spark.sql.DataFrame"></a>
-      <a id="issueCounts(Boolean):DataFrame"></a>
+      <a id="issueCounts(showSampleRecord:Boolean)(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame"></a>
+      <a id="issueCounts(Boolean)(RecordEnvironment):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">issueCounts</span><span class="params">(<span name="showSampleRecord">showSampleRecord: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">issueCounts</span><span class="params">(<span name="showSampleRecord">showSampleRecord: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@issueCounts(showSampleRecord:Boolean):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@issueCounts(showSampleRecord:Boolean)(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li><li name="com.swoop.spark.records.RecordsRichDataset#issueCounts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="issueCounts:org.apache.spark.sql.DataFrame"></a>
-      <a id="issueCounts:DataFrame"></a>
+      <a id="issueCounts(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame"></a>
+      <a id="issueCounts(RecordEnvironment):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">issueCounts</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">issueCounts</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@issueCounts:org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@issueCounts(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li><li name="com.swoop.spark.records.RecordsRichDataset#messageCounts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="messageCounts(showSampleRecord:Boolean):org.apache.spark.sql.DataFrame"></a>
-      <a id="messageCounts(Boolean):DataFrame"></a>
+      <a id="messageCounts(showSampleRecord:Boolean)(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame"></a>
+      <a id="messageCounts(Boolean)(RecordEnvironment):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">messageCounts</span><span class="params">(<span name="showSampleRecord">showSampleRecord: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">messageCounts</span><span class="params">(<span name="showSampleRecord">showSampleRecord: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@messageCounts(showSampleRecord:Boolean):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@messageCounts(showSampleRecord:Boolean)(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li><li name="com.swoop.spark.records.RecordsRichDataset#messageCounts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="messageCounts:org.apache.spark.sql.DataFrame"></a>
-      <a id="messageCounts:DataFrame"></a>
+      <a id="messageCounts(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame"></a>
+      <a id="messageCounts(RecordEnvironment):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">messageCounts</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">messageCounts</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@messageCounts:org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@messageCounts(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -745,18 +745,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordsRichDataset#recordData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="recordData(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.Dataset[org.apache.spark.sql.Row]"></a>
-      <a id="recordData(RecordEnvironment):Dataset[Row]"></a>
+      <a id="recordData(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.Dataset[A]"></a>
+      <a id="recordData(RecordEnvironment):Dataset[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">recordData</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="org.apache.spark.sql.Row">Row</span>]</span>
+        <span class="name">recordData</span><span class="params">(<span class="implicit">implicit </span><span name="env">env: <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@recordData(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.Dataset[org.apache.spark.sql.Row]" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@recordData(implicitenv:com.swoop.spark.records.RecordEnvironment):org.apache.spark.sql.Dataset[A]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -951,14 +951,14 @@
         </dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="→[B](y:B):(A,B)"></a>
-      <a id="→[B](B):(RecordsRichDataset[Rec],B)"></a>
+      <a id="→[B](B):(RecordsRichDataset[A,Rec],B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package$$RecordsRichDataset@→[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -966,8 +966,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
     </li></ol>
@@ -979,26 +979,30 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
             </div>
         <div class="conversion" name="scala.Predef.any2stringadd">
               <h3>Inherited by implicit conversion any2stringadd from
-                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
+                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.StringFormat">
               <h3>Inherited by implicit conversion StringFormat from
-                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
+                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.Ensuring">
               <h3>Inherited by implicit conversion Ensuring from
-                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
+                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.ArrowAssoc">
               <h3>Inherited by implicit conversion ArrowAssoc from
-                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
+                <a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.spark.records.RecordsRichDataset">RecordsRichDataset</a>[<span class="extype" name="com.swoop.spark.records.RecordsRichDataset.A">A</span>, <span class="extype" name="com.swoop.spark.records.RecordsRichDataset.Rec">Rec</span>]]
               </h3>
             </div>
         </div>

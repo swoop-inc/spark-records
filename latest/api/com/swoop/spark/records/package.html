@@ -505,7 +505,7 @@ work directly with Spark context APIs, allowing fast Spark-less testing.
     </span>
       <p class="shortcomment cmt">Base class for single and composite record builders.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for single and composite record builders.
 </p></div><dl class="paramcmts block"><dt class="tparam">Rec</dt><dd class="cmt"><p>The record</p></dd><dt class="tparam">Ctx</dt><dd class="cmt"><p>The job context</p></dd></dl></div>
-    </li><li name="com.swoop.spark.records.RecordEnvironment" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="com.swoop.spark.records.RecordEnvironment" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RecordEnvironmentextendsSerializable"></a>
       <a id="RecordEnvironment:RecordEnvironment"></a>
       <h4 class="signature">
@@ -521,7 +521,13 @@ work directly with Spark context APIs, allowing fast Spark-less testing.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Base trait for the implicits that provide hints about how records are persisted.</p>
+      <p class="shortcomment cmt">Base trait for the implicits that provide hints about how records are persisted.</p><div class="fullcomment"><div class="comment cmt"><p>Base trait for the implicits that provide hints about how records are persisted.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;Unable to find an implicit record environment for this record type. &quot; +<br/>  &quot;An implicit environment, e.g., FlatRecordEnvironment or PartitionedRecordEnvironment &quot; +<br/>  &quot;must be visible for many methods in Spark Records to work. Please, create one.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordsDataFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RecordsDataFrameextendsRootCauseAnalysisOps"></a>
       <a id="RecordsDataFrame:RecordsDataFrame"></a>
@@ -540,18 +546,18 @@ work directly with Spark context APIs, allowing fast Spark-less testing.
     </span>
       <p class="shortcomment cmt">Provides root cause analysis operations at the record level.</p>
     </li><li name="com.swoop.spark.records.RecordsRichDataset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RecordsRichDataset[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsAnyRef"></a>
-      <a id="RecordsRichDataset[Rec&lt;:Record[_,_]]:RecordsRichDataset[Rec]"></a>
+      <a id="RecordsRichDataset[A&lt;:Product,Rec]extendsSerializable"></a>
+      <a id="RecordsRichDataset[A&lt;:Product,Rec]:RecordsRichDataset[A,Rec]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="package$$RecordsRichDataset.html"><span class="name">RecordsRichDataset</span></a><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <a href="package$$RecordsRichDataset.html"><span class="name">RecordsRichDataset</span></a><span class="tparams">[<span name="A">A &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a></span>, <span name="Rec">Rec</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichDataset[Rec&lt;:com.swoop.spark.records.Record[_,_]]extendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.package@RecordsRichDataset[A&lt;:Product,Rec]extendsSerializable" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -775,6 +781,23 @@ includes a convenience factory for creating job contexts.
       </a>
     </span>
       
+    </li><li name="com.swoop.spark.records.FlatRecordEnvironment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlatRecordEnvironment"></a>
+      <a id="FlatRecordEnvironment:FlatRecordEnvironment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FlatRecordEnvironment$.html"><span class="name">FlatRecordEnvironment</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@FlatRecordEnvironment" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="com.swoop.spark.records.Issue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Issue"></a>
       <a id="Issue:Issue"></a>
@@ -788,6 +811,23 @@ includes a convenience factory for creating job contexts.
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.package@Issue" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.PartitionedRecordEnvironment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PartitionedRecordEnvironment"></a>
+      <a id="PartitionedRecordEnvironment:PartitionedRecordEnvironment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PartitionedRecordEnvironment$.html"><span class="name">PartitionedRecordEnvironment</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.package@PartitionedRecordEnvironment" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

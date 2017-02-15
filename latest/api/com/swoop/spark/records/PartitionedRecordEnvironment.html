@@ -28,10 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img alt="Class" src="../../../../lib/class_big.png" />
+        <a href="PartitionedRecordEnvironment$.html" title="See companion object"><img alt="Class/Object" src="../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../package.html" class="extype" name="com">com</a>.<a href="../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../package.html" class="extype" name="com.swoop.spark">spark</a>.<a href="package.html" class="extype" name="com.swoop.spark.records">records</a></p>
-        <h1>PartitionedRecordEnvironment</h1><h3><span class="morelinks"><div>Related Doc:
-            <a href="package.html" class="extype" name="com.swoop.spark.records">package records</a>
+        <h1><a href="PartitionedRecordEnvironment$.html" title="See companion object">PartitionedRecordEnvironment</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="PartitionedRecordEnvironment$.html" title="See companion object">object PartitionedRecordEnvironment</a>
+            | <a href="package.html" class="extype" name="com.swoop.spark.records">package records</a>
           </div></span></h3><span class="permalink">
       <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
@@ -95,7 +97,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.swoop.spark.records.PartitionedRecordEnvironment#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(colName:String,errorValue:String):com.swoop.spark.records.PartitionedRecordEnvironment"></a>
+      <a id="&lt;init&gt;(colName:String,errorValue:String,customRecordFields:Seq[String]):com.swoop.spark.records.PartitionedRecordEnvironment"></a>
       <a id="&lt;init&gt;:PartitionedRecordEnvironment"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -103,16 +105,16 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">PartitionedRecordEnvironment</span><span class="params">(<span name="colName">colName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="errorValue">errorValue: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
+        <span class="name">PartitionedRecordEnvironment</span><span class="params">(<span name="colName">colName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="errorValue">errorValue: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="customRecordFields">customRecordFields: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq.empty</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@&lt;init&gt;(colName:String,errorValue:String):com.swoop.spark.records.PartitionedRecordEnvironment" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@&lt;init&gt;(colName:String,errorValue:String,customRecordFields:Seq[String]):com.swoop.spark.records.PartitionedRecordEnvironment" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">colName</dt><dd class="cmt"><p>The record category partition column name.
                Conventionally, this is <code>par_cat</code>.</p></dd><dt class="param">errorValue</dt><dd class="cmt"><p>The category value for the partition with error records.
-                  Conventionally, this is <code>bad</code>.</p></dd></dl></div>
+                  Conventionally, this is <code>bad</code>.</p></dd><dt class="param">customRecordFields</dt><dd class="cmt"><p>Any custom fields that are part of the records.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -218,6 +220,41 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REQUIRED_RECORD_FIELDS:Seq[String]"></a>
+      <a id="REQUIRED_RECORD_FIELDS:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">REQUIRED_RECORD_FIELDS</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.Seq" class="extype" target="_top">Seq</a>[<span class="extype" name="java.lang.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@REQUIRED_RECORD_FIELDS:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#allRecordFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="allRecordFields:Seq[String]"></a>
+      <a id="allRecordFields:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allRecordFields</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@allRecordFields:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns the concatenation of <a href="RecordEnvironment.html#REQUIRED_RECORD_FIELDS:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS">REQUIRED_RECORD_FIELDS</a> and <a href="RecordEnvironment.html#customRecordFields:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#customRecordFields">customRecordFields</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the concatenation of <a href="RecordEnvironment.html#REQUIRED_RECORD_FIELDS:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS">REQUIRED_RECORD_FIELDS</a> and <a href="RecordEnvironment.html#customRecordFields:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#customRecordFields">customRecordFields</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -258,6 +295,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.swoop.spark.records.PartitionedRecordEnvironment#customRecordFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="customRecordFields:Seq[String]"></a>
+      <a id="customRecordFields:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">customRecordFields</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@customRecordFields:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Any custom fields that are part of the records.</p><div class="fullcomment"><div class="comment cmt"><p>Any custom fields that are part of the records.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.spark.records.PartitionedRecordEnvironment">PartitionedRecordEnvironment</a> → <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
     </li><li name="com.swoop.spark.records.PartitionedRecordEnvironment#dataFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dataFilter:org.apache.spark.sql.Column"></a>
       <a id="dataFilter:Column"></a>
@@ -411,18 +465,35 @@
     </span>
       <p class="shortcomment cmt">Returns an error filter that only includes the partitions with error data</p><div class="fullcomment"><div class="comment cmt"><p>Returns an error filter that only includes the partitions with error data</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.spark.records.PartitionedRecordEnvironment">PartitionedRecordEnvironment</a> → <a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordEnvironment#errorRecords" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="errorRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.Dataset[Rec]"></a>
-      <a id="errorRecords[Rec&lt;:Record[_,_]](Dataset[Rec]):Dataset[Rec]"></a>
+      <a id="errorRecords(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame"></a>
+      <a id="errorRecords(DataFrame):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">errorRecords</span><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>
+        <span class="name">errorRecords</span><span class="params">(<span name="dfRecords">dfRecords: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@errorRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.Dataset[Rec]" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@errorRecords(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns only the error records in the provided dataframe</p><div class="fullcomment"><div class="comment cmt"><p>Returns only the error records in the provided dataframe</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#errorRecords" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="errorRecords[Rec](dsRecords:org.apache.spark.sql.Dataset[Rec])(implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[_,_]]):org.apache.spark.sql.Dataset[Rec]"></a>
+      <a id="errorRecords[Rec](Dataset[Rec])(&lt;:&lt;[Rec,Record[_,_]]):Dataset[Rec]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">errorRecords</span><span class="tparams">[<span name="Rec">Rec</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>, <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@errorRecords[Rec](dsRecords:org.apache.spark.sql.Dataset[Rec])(implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[_,_]]):org.apache.spark.sql.Dataset[Rec]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -593,19 +664,19 @@
       </a>
     </span>
       <p class="shortcomment cmt">Returns a dataset with the data of data records (the record envelope is removed).</p><div class="fullcomment"><div class="comment cmt"><p>Returns a dataset with the data of data records (the record envelope is removed).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RecordEnvironment.html" class="extype" name="com.swoop.spark.records.RecordEnvironment">RecordEnvironment</a></dd></dl></div>
-    </li><li name="com.swoop.spark.records.RecordEnvironment#recordDataframe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="recordDataframe[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.DataFrame"></a>
-      <a id="recordDataframe[Rec&lt;:Record[_,_]](Dataset[Rec]):DataFrame"></a>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#recordData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recordData(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame"></a>
+      <a id="recordData(DataFrame):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">recordDataframe</span><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.recordDataframe.Rec">Rec</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">recordData</span><span class="params">(<span name="dfRecords">dfRecords: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@recordDataframe[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.PartitionedRecordEnvironment@recordData(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

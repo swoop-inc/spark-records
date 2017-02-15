@@ -49,7 +49,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base trait for the implicits that provide hints about how records are persisted.</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base trait for the implicits that provide hints about how records are persisted.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;Unable to find an implicit record environment for this record type. &quot; +<br/>  &quot;An implicit environment, e.g., FlatRecordEnvironment or PartitionedRecordEnvironment &quot; +<br/>  &quot;must be visible for many methods in Spark Records to work. Please, create one.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div><div class="toggleContainer block">
@@ -218,6 +224,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="REQUIRED_RECORD_FIELDS:Seq[String]"></a>
+      <a id="REQUIRED_RECORD_FIELDS:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">REQUIRED_RECORD_FIELDS</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.Seq" class="extype" target="_top">Seq</a>[<span class="extype" name="java.lang.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@REQUIRED_RECORD_FIELDS:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.spark.records.RecordEnvironment#allRecordFields" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allRecordFields:Seq[String]"></a>
+      <a id="allRecordFields:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allRecordFields</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@allRecordFields:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns the concatenation of <a href="#REQUIRED_RECORD_FIELDS:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS">REQUIRED_RECORD_FIELDS</a> and <a href="#customRecordFields:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#customRecordFields">customRecordFields</a>.</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -258,6 +298,24 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#customRecordFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="customRecordFields:Seq[String]"></a>
+      <a id="customRecordFields:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">customRecordFields</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@customRecordFields:Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns any custom fields in the record, beyond <a href="#REQUIRED_RECORD_FIELDS:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS">REQUIRED_RECORD_FIELDS</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns any custom fields in the record, beyond <a href="#REQUIRED_RECORD_FIELDS:Seq[String]" class="extmbr" name="com.swoop.spark.records.RecordEnvironment#REQUIRED_RECORD_FIELDS">REQUIRED_RECORD_FIELDS</a>.</p><p>By default, there are none.
+</p></div></div>
     </li><li name="com.swoop.spark.records.RecordEnvironment#dataFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dataFilter:org.apache.spark.sql.Column"></a>
       <a id="dataFilter:Column"></a>
@@ -396,18 +454,35 @@ The default implementation is to invert <a href="#errorFilter:org.apache.spark.s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.swoop.spark.records.RecordEnvironment#errorRecords" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="errorRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.Dataset[Rec]"></a>
-      <a id="errorRecords[Rec&lt;:Record[_,_]](Dataset[Rec]):Dataset[Rec]"></a>
+      <a id="errorRecords(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame"></a>
+      <a id="errorRecords(DataFrame):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">errorRecords</span><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>
+        <span class="name">errorRecords</span><span class="params">(<span name="dfRecords">dfRecords: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@errorRecords[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.Dataset[Rec]" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@errorRecords(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns only the error records in the provided dataframe</p>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#errorRecords" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="errorRecords[Rec](dsRecords:org.apache.spark.sql.Dataset[Rec])(implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[_,_]]):org.apache.spark.sql.Dataset[Rec]"></a>
+      <a id="errorRecords[Rec](Dataset[Rec])(&lt;:&lt;[Rec,Record[_,_]]):Dataset[Rec]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">errorRecords</span><span class="tparams">[<span name="Rec">Rec</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>, <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.errorRecords.Rec">Rec</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@errorRecords[Rec](dsRecords:org.apache.spark.sql.Dataset[Rec])(implicitev:&lt;:&lt;[Rec,com.swoop.spark.records.Record[_,_]]):org.apache.spark.sql.Dataset[Rec]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -578,19 +653,19 @@ The default implementation is to invert <a href="#errorFilter:org.apache.spark.s
       </a>
     </span>
       <p class="shortcomment cmt">Returns a dataset with the data of data records (the record envelope is removed).</p>
-    </li><li name="com.swoop.spark.records.RecordEnvironment#recordDataframe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="recordDataframe[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.DataFrame"></a>
-      <a id="recordDataframe[Rec&lt;:Record[_,_]](Dataset[Rec]):DataFrame"></a>
+    </li><li name="com.swoop.spark.records.RecordEnvironment#recordData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="recordData(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame"></a>
+      <a id="recordData(DataFrame):DataFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">recordDataframe</span><span class="tparams">[<span name="Rec">Rec &lt;: <a href="Record.html" class="extype" name="com.swoop.spark.records.Record">Record</a>[_, _]</span>]</span><span class="params">(<span name="dsRecords">dsRecords: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[<span class="extype" name="com.swoop.spark.records.RecordEnvironment.recordDataframe.Rec">Rec</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">recordData</span><span class="params">(<span name="dfRecords">dfRecords: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@recordDataframe[Rec&lt;:com.swoop.spark.records.Record[_,_]](dsRecords:org.apache.spark.sql.Dataset[Rec]):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.swoop.spark.records.RecordEnvironment@recordData(dfRecords:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
