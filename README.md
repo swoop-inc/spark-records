@@ -13,7 +13,7 @@ Spark Records is a data processing pattern with an associated lightweight, depen
 
 Spark Records has been tested with petabyte-scale data at [Swoop](https://www.swoop.com). The library was extracted out of Swoop's production systems to share with the Spark community.
 
-See the [documentation](https://swoop-inc.github.io/spark-records/) for more information or watch the [Spark Summit talk](https://spark-summit.org/east-2017/events/bulletproof-jobs-patterns-for-large-scale-spark-processing/) ([slides](hhtps://www.slideshare.net/slideshow/embed_code/key/TSOLI6UGKLFZE)).
+See the [documentation](https://swoop-inc.github.io/spark-records/) for more information or watch the [Spark Summit talk](https://spark-summit.org/east-2017/events/bulletproof-jobs-patterns-for-large-scale-spark-processing/) ([slides](https://www.slideshare.net/slideshow/embed_code/key/TSOLI6UGKLFZE)).
 
 ## Installation
 
