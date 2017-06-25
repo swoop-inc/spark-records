@@ -21,11 +21,11 @@ import org.apache.spark.sql.{Column, DataFrame, Dataset, Encoder, functions => f
 import scala.annotation.implicitNotFound
 
 
-/** Base trait for the implicits that provide hints about how records are persisted. */
+/** Base class for the implicits that provide hints about how records are persisted. */
 @implicitNotFound("Unable to find an implicit record environment for this record type. " +
   "An implicit environment, e.g., FlatRecordEnvironment or PartitionedRecordEnvironment " +
   "must be visible for many methods in Spark Records to work. Please, create one.")
-trait RecordEnvironment extends Serializable {
+abstract class RecordEnvironment extends Serializable {
 
   val REQUIRED_RECORD_FIELDS = Seq("features", "data", "source", "flight", "issues")
 
@@ -34,6 +34,12 @@ trait RecordEnvironment extends Serializable {
     * By default, there are none.
     */
   def customRecordFields: Seq[String] = Seq.empty
+
+  /** Returns a list of fields to add to [[recordData]] beyond `data.*`.
+    *
+    * By default, there are none.
+    */
+  def customDataFields: Seq[String] = Seq.empty
 
   /** Returns the concatenation of [[REQUIRED_RECORD_FIELDS]] and [[customRecordFields]].
     */
@@ -55,13 +61,23 @@ trait RecordEnvironment extends Serializable {
   def errorRecords(dfRecords: DataFrame): DataFrame =
     dfRecords.where(errorFilter)
 
-  /** Returns a dataframe with the data of data records (the record envelope is removed). */
+  /** Returns a dataframe with the data of data records (the record envelope is removed).
+    * Custom data fields are added.
+    */
   def recordData(dfRecords: DataFrame): DataFrame =
-    dfRecords.where(dataFilter).select("data.*")
+    dfRecords.where(dataFilter).select("data.*", customDataFields: _*)
 
   /** Returns a dataset with the data of data records (the record envelope is removed). */
   def recordData[A <: Product, Rec <: Record[A, _]](dsRecords: Dataset[Rec])(implicit enc: Encoder[A]): Dataset[A] =
     dsRecords.flatMap(_.data)
+
+  // Validate customDataFields
+  {
+    val unknownFields = customDataFields.diff(customRecordFields)
+    if (unknownFields.nonEmpty) {
+      throw new Exception(s"customDataFields include the following fields not part of customRecordFields: ${unknownFields.mkString(", ")}")
+    }
+  }
 
 }
 
@@ -69,9 +85,11 @@ trait RecordEnvironment extends Serializable {
 /** A flat record environment.
   *
   * @param customRecordFields Any custom fields that are part of the records.
+  * @param customDataFields   Any custom fields from the record to include in record data.
   */
 class FlatRecordEnvironment(
-  override val customRecordFields: Seq[String] = Seq.empty
+  override val customRecordFields: Seq[String] = Seq.empty,
+  override val customDataFields: Seq[String] = Seq.empty
 ) extends RecordEnvironment {
 
   /** Returns an error filter that selects all records where `features` has the error bit set. */
@@ -81,23 +99,25 @@ class FlatRecordEnvironment(
 
 
 object FlatRecordEnvironment {
-  def apply(customFields: Seq[String] = Seq.empty) =
-    new FlatRecordEnvironment(customFields)
+  def apply(customRecordFields: Seq[String] = Seq.empty, customDataFields: Seq[String] = Seq.empty) =
+    new FlatRecordEnvironment(customRecordFields, customDataFields)
 }
 
 
 /** A partitioned error environment.
   *
-  * @param colName The record category partition column name.
-  *                Conventionally, this is `par_cat`.
-  * @param errorValue The category value for the partition with error records.
-  *                   Conventionally, this is `bad`.
+  * @param colName            The record category partition column name.
+  *                           Conventionally, this is `par_cat`.
+  * @param errorValue         The category value for the partition with error records.
+  *                           Conventionally, this is `bad`.
   * @param customRecordFields Any custom fields that are part of the records.
+  * @param customDataFields   Any custom fields from the record to include in record data.
   */
 class PartitionedRecordEnvironment(
   colName: String,
   errorValue: String,
-  override val customRecordFields: Seq[String] = Seq.empty
+  override val customRecordFields: Seq[String] = Seq.empty,
+  override val customDataFields: Seq[String] = Seq.empty
 ) extends RecordEnvironment {
 
   /** Returns an error filter that only includes the partitions with error data */
@@ -110,6 +130,6 @@ class PartitionedRecordEnvironment(
 
 
 object PartitionedRecordEnvironment {
-  def apply(colName: String, errorValue: String, customFields: Seq[String] = Seq.empty) =
-    new PartitionedRecordEnvironment(colName, errorValue, customFields)
+  def apply(colName: String, errorValue: String, customRecordFields: Seq[String] = Seq.empty, customDataFields: Seq[String] = Seq.empty) =
+    new PartitionedRecordEnvironment(colName, errorValue, customRecordFields, customDataFields)
 }
