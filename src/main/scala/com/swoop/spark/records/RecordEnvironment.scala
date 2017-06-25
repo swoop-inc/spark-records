@@ -67,8 +67,12 @@ abstract class RecordEnvironment extends Serializable {
   def recordData(dfRecords: DataFrame): DataFrame =
     dfRecords.where(dataFilter).select("data.*", customDataFields: _*)
 
-  /** Returns a dataset with the data of data records (the record envelope is removed). */
-  def recordData[A <: Product, Rec <: Record[A, _]](dsRecords: Dataset[Rec])(implicit enc: Encoder[A]): Dataset[A] =
+  /** Returns a dataset with the data of data records (the record envelope is removed).
+    *
+    * @note record data for datasets of `Product` do not include custom data fields.
+    *       If you need those you have to go via the `DataFrame` version.
+    */
+  def recordData[A <: Product, Rec](dsRecords: Dataset[Rec])(implicit ev: Rec <:< Record[A, _], enc: Encoder[A]): Dataset[A] =
     dsRecords.flatMap(_.data)
 
   // Validate customDataFields

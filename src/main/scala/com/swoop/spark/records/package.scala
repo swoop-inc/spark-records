@@ -95,7 +95,7 @@ package object records {
       unknownErrorDetailCounts(RootCauseAnalysis.classNameContains(classNameFragment)).drop("id_messages")
 
     def recordData(implicit env: RecordEnvironment): Dataset[A] =
-      underlying.filter(env.dataFilter).flatMap(_.data)
+      env.recordData(underlying.filter(env.dataFilter))
 
   }
 
@@ -113,7 +113,7 @@ package object records {
       env.errorRecords(underlying)
 
     def recordData(implicit env: RecordEnvironment): DataFrame =
-      underlying.filter(env.dataFilter).select("data.*")
+      env.recordData(underlying.filter(env.dataFilter))
 
     def records(implicit env: RecordEnvironment): DataFrame =
       new RootCauseAnalysis(underlying, env).records
