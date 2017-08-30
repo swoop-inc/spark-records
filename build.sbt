@@ -8,13 +8,16 @@ bintrayPackageLabels := Seq("apache", "spark", "apache-spark", "scala", "big-dat
 
 licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
-javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
+javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 scalaVersion := "2.11.8"
 
 crossScalaVersions := Seq("2.11.8")
 
-val vSpark = "2.0.2"
+val vSpark = "2.2.0"
+
+// Speed up dependency resolution (experimental)
+updateOptions := updateOptions.value.withCachedResolution(true)
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % vSpark % "provided" withSources(),
@@ -22,7 +25,7 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
   "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
   "com.swoop" %% "spark-test-sugar" % "1.5.0" % "test" withSources(),
-  "org.scalatest" %% "scalatest" % "3.0.1" % "test" withSources()
+  "org.scalatest" %% "scalatest" % "3.0.4" % "test" withSources()
 )
 
 testOptions in Test += Tests.Argument("-oS")

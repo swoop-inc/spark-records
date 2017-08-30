@@ -7,5 +7,5 @@ resolvers += "bintray-spark-packages" at "https://dl.bintray.com/spark-packages/
 addSbtPlugin("com.fortysevendeg"  % "sbt-microsites" % "0.4.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.5.4")
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")
-addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")
+addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.1")
 addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.7.0")
