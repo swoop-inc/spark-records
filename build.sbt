@@ -5,6 +5,7 @@ organization := "com.swoop"
 
 bintrayOrganization := Some("swoop-inc")
 bintrayPackageLabels := Seq("apache", "spark", "apache-spark", "scala", "big-data", "spark-records", "dataset", "swoop")
+resolvers += "swoop-bintray" at "https://dl.bintray.com/swoop-inc/maven/"
 
 licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
