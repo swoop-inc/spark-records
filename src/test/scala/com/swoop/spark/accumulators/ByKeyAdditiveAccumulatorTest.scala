@@ -1,19 +1,19 @@
 package com.swoop.spark.accumulators
 
-import com.swoop.spark.test.SparkSqlSpec
+import com.swoop.spark.SparkSessionTestWrapper
 import org.scalatest.{Matchers, WordSpec}
 
 import scala.collection.JavaConversions._
 
 
-class ByKeyAdditiveAccumulatorTest extends WordSpec with Matchers with SparkSqlSpec {
+class ByKeyAdditiveAccumulatorTest extends WordSpec with Matchers with SparkSessionTestWrapper {
 
   "the accumulator" should {
     "sum values into a map" in {
       val acc = new ByKeyAdditiveAccumulator[String, Int]
-      sc.register(acc)
+      spark.sparkContext.register(acc)
 
-      sc.parallelize(1 to 100)
+      spark.sparkContext.parallelize(1 to 100)
         .foreach { value =>
           val category = if (value % 2 == 0) "even" else "odd"
           acc.add(category, 1)

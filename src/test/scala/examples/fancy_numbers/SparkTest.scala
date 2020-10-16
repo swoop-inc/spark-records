@@ -1,13 +1,14 @@
 package examples.fancy_numbers
 
+import com.swoop.spark.SparkSessionTestWrapper
 import com.swoop.spark.records._
-import com.swoop.spark.test.SparkSqlSpec
 import org.apache.spark.sql.Dataset
 import org.apache.spark.storage.StorageLevel
 
 
-class SparkTest extends ExampleSpec with SparkSqlSpec with TestNegative5To100 {
+class SparkTest extends ExampleSpec with SparkSessionTestWrapper with TestNegative5To100 {
 
+  val sc = spark.sparkContext
   lazy val dc = SimpleDriverContext(sc)
   lazy val jc = dc.jobContext(SimpleJobContext)
   lazy val ds = recordsDataset(-5 to 100, jc)
@@ -15,8 +16,7 @@ class SparkTest extends ExampleSpec with SparkSqlSpec with TestNegative5To100 {
 
   "in an integration test" - {
     implicit val env = FlatRecordEnvironment()
-    val sqlContext = sqlc
-    import sqlContext.implicits._
+    import spark.implicits._
 
     behave like fancyRecordBuilder(records, jc)
 
@@ -60,9 +60,8 @@ class SparkTest extends ExampleSpec with SparkSqlSpec with TestNegative5To100 {
   }
 
   def recordsDataset(numbers: Seq[Int], jc: JobContext): Dataset[FancyNumberRecord] = {
-    val sqlContext = sqlc
-    import sqlContext.implicits._
-    sqlc.createDataset(numbers)
+    import spark.implicits._
+    spark.createDataset(numbers)
       .mapPartitions(inputs => Example.buildRecords(inputs, jc))
       .persist(StorageLevel.MEMORY_ONLY)
   }

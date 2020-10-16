@@ -25,7 +25,6 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % vSpark % "provided" withSources() excludeAll ExclusionRule(organization = "org.mortbay.jetty"),
   "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
   "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
-  "com.swoop" %% "spark-test-sugar" % "1.5.0" % "test" withSources(),
   "org.scalatest" %% "scalatest" % "3.0.4" % "test" withSources()
 )
 
