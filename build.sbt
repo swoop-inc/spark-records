@@ -15,7 +15,7 @@ scalaVersion := "2.11.8"
 
 crossScalaVersions := Seq("2.11.8")
 
-val vSpark = "2.2.0"
+val vSpark = "2.4.5"
 
 // Speed up dependency resolution (experimental)
 updateOptions := updateOptions.value.withCachedResolution(true)
