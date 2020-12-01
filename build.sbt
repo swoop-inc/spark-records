@@ -11,11 +11,11 @@ licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.1"
 
-crossScalaVersions := Seq("2.11.8")
+crossScalaVersions := Seq("2.12.1")
 
-val vSpark = "2.2.0"
+val vSpark = "3.0.1"
 
 // Speed up dependency resolution (experimental)
 updateOptions := updateOptions.value.withCachedResolution(true)
@@ -56,7 +56,5 @@ micrositeGithubOwner := "swoop-inc"
 micrositeGithubRepo := "spark-records"
 micrositeHighlightTheme := "tomorrow"
 
-import de.heikoseeberger.sbtheader.license.Apache2_0
-headers := Map(
-  "scala" -> Apache2_0("2017", "Simeon Simeonov and Swoop, Inc.")
-)
+headerLicense := Some(HeaderLicense.ALv2("2017", "Simeon Simeonov and Swoop, Inc.", HeaderLicenseStyle.SpdxSyntax))
+

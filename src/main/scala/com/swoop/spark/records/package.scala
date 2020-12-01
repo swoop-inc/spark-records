@@ -39,7 +39,7 @@ package object records {
       env.errorRecords(underlying)
 
     def allIssues(implicit env: RecordEnvironment): DataFrame =
-      new RootCauseAnalysis(underlying.filter(_.issues.isDefined).toDF(), env).issues
+      new RootCauseAnalysis(underlying.filter((r: Rec) => r.issues.isDefined).toDF(), env).issues
 
     def issueCounts(implicit env: RecordEnvironment): DataFrame =
       issueCounts(false)
