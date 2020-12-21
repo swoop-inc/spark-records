@@ -21,7 +21,7 @@ class IssueTest extends WordSpec with Matchers {
         cause.stack.length should be > 1
 
         val elem = cause.stack.head
-        elem.className should include("IssueTest$")
+        elem.className should include("IssueTest")
         elem.methodName shouldBe "createException$1"
         elem.fileName shouldBe "IssueTest.scala"
         elem.lineNumber shouldBe 10 // line number of createException() above

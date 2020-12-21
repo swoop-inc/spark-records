@@ -32,7 +32,7 @@ package object records {
     *
     * @see [[RootCauseAnalysisOps]]
     */
-  implicit class RecordsRichDataset[A <: Product : Encoder, Rec](val underlying: Dataset[Rec])
+  implicit class RecordsRichDataset[A <: Product, Rec](val underlying: Dataset[Rec])
     (implicit ev: Rec <:< Record[A, _]) extends Serializable {
 
     def errorRecords(implicit env: RecordEnvironment): Dataset[Rec] =
@@ -94,7 +94,7 @@ package object records {
       (implicit env: RecordEnvironment): DataFrame =
       unknownErrorDetailCounts(RootCauseAnalysis.classNameContains(classNameFragment)).drop("id_messages")
 
-    def recordData(implicit env: RecordEnvironment): Dataset[A] =
+    def recordData(implicit env: RecordEnvironment, enc: Encoder[A]): Dataset[A] =
       env.recordData(underlying.filter(env.dataFilter))
 
   }
