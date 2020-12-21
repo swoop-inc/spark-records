@@ -75,5 +75,3 @@ lazy val micrositeSettings = Seq(
   micrositeGithubRepo := "spark-records",
   micrositeHighlightTheme := "tomorrow"
 )
-
-
