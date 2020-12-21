@@ -35,6 +35,20 @@ Spark Records is maintained by [Sim Simeonov](https://github.com/ssimeonov) and 
 
 Special thanks to [Reynold Xin](https://github.com/rxin) and [Michael Armbrust](https://github.com/marmbrus) for many interesting conversations about better ways to use Spark.
 
+## Development
+
+Build docs microsite 
+
+```sbt "project docs" makeMicrosite```
+
+Run docs microsite locally (run under `target/site` folder)
+
+```
+jekyll serve -b /spark-records
+``` 
+
+[More details](https://47degrees.github.io/sbt-microsites/) 
+
 ## License
 
 `spark-records` is Copyright &copy; 2017 [Simeon Simeonov](https://about.me/simeonov) and [Swoop, Inc.](https://www.swoop.com) It is free software, and may be redistributed under the terms of the LICENSE.
