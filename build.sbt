@@ -5,9 +5,19 @@ organization := "com.swoop"
 
 version := "3.0.0"
 
-licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
-
 val vSpark = "3.0.1"
+
+credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
+licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
+homepage := Some(url("https://github.com/swoop-inc/spark-records"))
+developers ++= List(
+  Developer("ssimeonov", "Simeon Simeonov", "@ssimeonov", url("https://github.com/ssimeonov"))
+)
+scmInfo := Some(ScmInfo(url("https://github.com/swoop-inc/spark-records"), "git@github.com:swoop-inc/spark-records.git"))
+updateOptions := updateOptions.value.withLatestSnapshots(false)
+publishMavenStyle := true
+publishTo := sonatypePublishToBundle.value
+Global/useGpgPinentry := true
 
 // Speed up dependency resolution (experimental)
 updateOptions := updateOptions.value.withCachedResolution(true)
