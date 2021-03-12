@@ -3,10 +3,6 @@ com.typesafe.sbt.SbtGit.versionWithGit
 
 organization := "com.swoop"
 
-bintrayOrganization := Some("swoop-inc")
-bintrayRepository := "spark-records"
-bintrayPackageLabels := Seq("apache", "spark", "apache-spark", "scala", "big-data", "spark-records", "dataset", "swoop")
-resolvers += "swoop-bintray" at "https://dl.bintray.com/swoop-inc/maven/"
 version := "3.0.0"
 
 licenses +=("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
@@ -15,9 +11,6 @@ val vSpark = "3.0.1"
 
 // Speed up dependency resolution (experimental)
 updateOptions := updateOptions.value.withCachedResolution(true)
-
-// for bintray bug: https://github.com/sbt/sbt-bintray/issues/177
-ThisBuild / useSuperShell := false
 
 lazy val scalaSettings = Seq(
   scalaVersion := "2.12.12",
