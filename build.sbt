@@ -3,7 +3,7 @@ com.typesafe.sbt.SbtGit.versionWithGit
 
 organization := "com.swoop"
 
-version := "3.0.0"
+version := "3.0.1"
 
 val vSpark = "3.0.1"
 
